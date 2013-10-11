@@ -11,7 +11,7 @@ hardcopy_append on
 #idle 3600 lockscreen
 #password /RohmJabCdrXU
 #escape ^Tt
-shell -/bin/bash
+shell -/bin/zsh
 shelltitle shell
 
 caption always
