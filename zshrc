@@ -339,6 +339,77 @@ function change-around {
 zle -N change-around
 
 
+
+
+# PROMPT
+## fancy stuff I may put in a separate file later....
+## [zsh-git-prompt] location
+#export __GIT_PROMPT_DIR=~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-olivierverdier-SLASH-zsh-git-prompt.git/
+#
+## [zsh-git-prompt] do not execute the git prompt for the ~/ directory, as it is _really_ slow (redefine original functions from the plugin)
+#function chpwd_update_git_vars() {
+#  if [ $PWD = $HOME ]; then
+#    unset __CURRENT_GIT_STATUS
+#  else
+#    update_current_git_vars
+#  fi
+#}
+#
+#function preexec_update_git_vars() {
+#  if [ $PWD = $HOME ]; then
+#    unset __EXECUTED_GIT_COMMAND
+#  else
+#    case "$2" in
+#      git*)
+#      __EXECUTED_GIT_COMMAND=1
+#      ;;
+#    esac
+#  fi
+#}
+#
+## result of last command displays either happy or sad face as a prompt
+#smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
+
+# vim mode indicator in prompt (http://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode)
+vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
+vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
+vim_mode=$vim_ins_mode
+
+function zle-keymap-select {
+  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-finish {
+  vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
+
+# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
+# Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
+function TRAPINT() {
+  vim_mode=$vim_ins_mode
+  return $(( 128 + $1 ))
+}
+
+#PROMPT='
+#%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode}
+#${smiley} '
+
+#RPROMPT='%{$fg[white]%}%T%{$reset_color%}'
+
+autoload -U promptinit
+promptinit
+
+prompt pure
+
+RPROMPT='${vim_mode}'
+
+# don't display RPROMPT for previously accepted lines; only display it next to current line
+setopt transient_rprompt
+
+
 # KEY BINDINGS
 
 # 200ms wait (20 == 200ms) for a longer bound string (usually ESC + something; wait 200ms for 'something' and if it doesn't come, just execute normal <Esc>)
@@ -430,8 +501,8 @@ case "$TERM" in
     bindkey -M vicmd '^y'    yank
     bindkey -M vicmd '^w'    backward-kill-word
     bindkey -M vicmd '^u'    backward-kill-line
-    bindkey -M vicmd '/'     vi-history-search-forward
-    bindkey -M vicmd '?'     vi-history-search-backward
+    bindkey -M vicmd '/'     vi-history-search-backward
+    bindkey -M vicmd '?'     vi-history-search-forward
     bindkey -M vicmd '^_'    undo
     bindkey -M vicmd '\ef'   forward-word                      # Alt-f
     bindkey -M vicmd '\eb'   backward-word                     # Alt-b
@@ -440,77 +511,6 @@ case "$TERM" in
     bindkey -M vicmd '\e[6~' history-beginning-search-forward  # PageDown
   ;;
 esac
-
-
-
-# PROMPT
-## fancy stuff I may put in a separate file later....
-## [zsh-git-prompt] location
-#export __GIT_PROMPT_DIR=~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-olivierverdier-SLASH-zsh-git-prompt.git/
-#
-## [zsh-git-prompt] do not execute the git prompt for the ~/ directory, as it is _really_ slow (redefine original functions from the plugin)
-#function chpwd_update_git_vars() {
-#  if [ $PWD = $HOME ]; then
-#    unset __CURRENT_GIT_STATUS
-#  else
-#    update_current_git_vars
-#  fi
-#}
-#
-#function preexec_update_git_vars() {
-#  if [ $PWD = $HOME ]; then
-#    unset __EXECUTED_GIT_COMMAND
-#  else
-#    case "$2" in
-#      git*)
-#      __EXECUTED_GIT_COMMAND=1
-#      ;;
-#    esac
-#  fi
-#}
-#
-## result of last command displays either happy or sad face as a prompt
-#smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
-
-# vim mode indicator in prompt (http://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode)
-vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
-
-# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
-# Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
-function TRAPINT() {
-  vim_mode=$vim_ins_mode
-  return $(( 128 + $1 ))
-}
-
-#PROMPT='
-#%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode}
-#${smiley} '
-
-#RPROMPT='%{$fg[white]%}%T%{$reset_color%}'
-
-autoload -U promptinit
-promptinit
-
-prompt pure
-
-RPROMPT='${vim_mode}'
-
-# don't display RPROMPT for previously accepted lines; only display it next to current line
-setopt transient_rprompt
-
 
 
 # SPELLING CORRECTIONS
