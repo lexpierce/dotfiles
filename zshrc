@@ -44,7 +44,7 @@ setopt nohup
 
 # PATHS
 
-export PATH=~/bin:/opt/git/bin:/opt/subversion/bin:${PATH}
+export PATH=~/bin:/opt/git/bin:/opt/subversion/bin:/usr/local/bin:${PATH}
 export PYTHONPATH=~/lib/python
 export RUBYLIB=~/lib/ruby
 
