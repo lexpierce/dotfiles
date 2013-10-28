@@ -563,8 +563,8 @@ REPORTTIME=10
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
 # set DISPLAY if Xvfb is running (expects it to run on :0)
-xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
+[ -x /usr/bin/xdpyinfo ] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
-~/.zsh/base16-default.dark.sh
+# ~/.zsh/base16-default.dark.sh
 
 # vim:ts=4:sw=4
