@@ -12,9 +12,7 @@ set hlsearch
 silent !mkdir ~/.vim/backups
 set undodir=~/.vim/backups
 set undofile
-let base16colorspace=256
-colorscheme base16-default
-set background=dark
+colorscheme Tomorrow-Night
 
 set autoindent
 set smartindent
