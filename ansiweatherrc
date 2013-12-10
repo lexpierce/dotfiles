@@ -1,0 +1,7 @@
+units:imperial
+symbols:true
+background:\033[30m
+text:\033[37m
+data:\033[33m
+delimiter:\033[35m=>
+dashes:\033[34m-
