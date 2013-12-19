@@ -63,9 +63,9 @@ export GREP_COLOR='31'
 export GREP_OPTIONS='--color=auto'
 
 # colored ls
-[[ `uname` != "Darwin" ]] && eval "`dircolors -b`"
+[[ `uname` == "Linux" ]] && eval "`dircolors -b`"
 alias ls='ls --color=auto'
-[[ `uname` == "Darwin" ]] && alias ls='ls -FG'
+[[ `uname` != "Linux" ]] && alias ls='ls -FG'
 
 # make less always work with colored input
 alias less='less -R'
@@ -77,6 +77,9 @@ alias watch='watch --color'
 
 # ls
 alias ll='ls -lh'
+
+# vi (go FreeBSD)
+alias vi='vim'
 
 # uses git blame to calculate code ownership (source: http://stackoverflow.com/questions/4589731/git-blame-statistics)
 function fame {
@@ -110,6 +113,7 @@ if (( $# == 0 )) && [[ -f tmp/current.vim ]]; then
 # misc
 alias diff='colordiff -u'
 alias tmux='TERM=screen-256color tmux'
+alias screen='TERM=screen-256color screen'
 
 # GLOBAL ALIASES
 
