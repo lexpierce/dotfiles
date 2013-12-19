@@ -8,14 +8,9 @@
 [[ $- != *i* ]] && return
 
 alias ls="ls -FG"
-    
-export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w 🍔  \[\033[00m\]"
-# case $TERM in
-#   xterm*|rxvt|Eterm|eterm|Terminal|terminal)
-#    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"' ;;
-#   screen)
-#    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"' ;;
-# esac
+
+export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w \$ \[\033[00m\]"
+[[ `uname -n` == "Darwin" ]] && export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w 🍔  \[\033[00m\]"
 
 set -o ignoreeof
 set -o vi
