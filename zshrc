@@ -57,10 +57,11 @@ fpath=(~/.zsh ~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-
 # colors
 autoload -U colors
 colors
+TOMORROWNIGHT="mt=38;5;143:sl=:cx=:fn=38;5;139:ln=38;5;222:bn=38;5;143:se=38;5;222"
 
 # colored grep
-export GREP_COLOR='31'
-export GREP_OPTIONS='--color=auto'
+export GREP_OPTIONS="--color=auto -n"
+export GREP_COLORS=$TOMORROWNIGHT
 
 # colored ls
 [[ `uname` == "Linux" ]] && eval "`dircolors -b`"
