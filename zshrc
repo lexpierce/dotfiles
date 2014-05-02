@@ -51,6 +51,7 @@ export RUBYLIB=~/lib/ruby
 # fpath (for zsh-completions)
 fpath=(~/.zsh ~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
 
+# Jump to a tmux session remotely...
 if [ -n "${LC_TMUX_SESSION_NAME}" -a ${TERM} != "screen" -a "$(uname -n)" != "Linux" ]; then
     tmux has-session -t ${LC_TMUX_SESSION_NAME} && tmux attach-session -t ${LC_TMUX_SESSION_NAME} || tmux new-session -s ${LC_TMUX_SESSION_NAME}
 fi
