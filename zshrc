@@ -571,5 +571,12 @@ REPORTTIME=10
 [ -x /usr/bin/xdpyinfo ] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
 # ~/.zsh/base16-default.dark.sh
+#
+***REMOVED***
+
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
 
 # vim:ts=4:sw=4
