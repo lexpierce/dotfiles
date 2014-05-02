@@ -51,6 +51,9 @@ export RUBYLIB=~/lib/ruby
 # fpath (for zsh-completions)
 fpath=(~/.zsh ~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
 
+if [ -n "${LC_TMUX_SESSION_NAME}" -a ${TERM} != "screen" -a "$(uname -n)" != "Linux" ]; then
+    tmux has-session -t ${LC_TMUX_SESSION_NAME} && tmux attach-session -t ${LC_TMUX_SESSION_NAME} || tmux new-session -s ${LC_TMUX_SESSION_NAME}
+fi
 
 # COLORS
 
@@ -113,8 +116,11 @@ if (( $# == 0 )) && [[ -f tmp/current.vim ]]; then
 
 # misc
 alias diff='colordiff -u'
-alias tmux='TERM=screen-256color tmux'
 alias screen='TERM=screen-256color screen'
+
+# tmux stuff
+alias tmux='TERM=screen-256color tmux'
+export LC_TMUX_SESSION_NAME=lexpierce
 
 # GLOBAL ALIASES
 
@@ -343,38 +349,6 @@ function change-around {
 }
 zle -N change-around
 
-
-
-
-# PROMPT
-## fancy stuff I may put in a separate file later....
-## [zsh-git-prompt] location
-#export __GIT_PROMPT_DIR=~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-olivierverdier-SLASH-zsh-git-prompt.git/
-#
-## [zsh-git-prompt] do not execute the git prompt for the ~/ directory, as it is _really_ slow (redefine original functions from the plugin)
-#function chpwd_update_git_vars() {
-#  if [ $PWD = $HOME ]; then
-#    unset __CURRENT_GIT_STATUS
-#  else
-#    update_current_git_vars
-#  fi
-#}
-#
-#function preexec_update_git_vars() {
-#  if [ $PWD = $HOME ]; then
-#    unset __EXECUTED_GIT_COMMAND
-#  else
-#    case "$2" in
-#      git*)
-#      __EXECUTED_GIT_COMMAND=1
-#      ;;
-#    esac
-#  fi
-#}
-#
-## result of last command displays either happy or sad face as a prompt
-#smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
-
 # vim mode indicator in prompt (http://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode)
 vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
 vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
@@ -397,12 +371,6 @@ function TRAPINT() {
   vim_mode=$vim_ins_mode
   return $(( 128 + $1 ))
 }
-
-#PROMPT='
-#%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode}
-#${smiley} '
-
-#RPROMPT='%{$fg[white]%}%T%{$reset_color%}'
 
 autoload -U promptinit
 promptinit
