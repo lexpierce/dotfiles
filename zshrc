@@ -538,13 +538,4 @@ REPORTTIME=10
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 [ -x /usr/bin/xdpyinfo ] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
-# ~/.zsh/base16-default.dark.sh
-#
-***REMOVED***
-
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-
 # vim:ts=4:sw=4
