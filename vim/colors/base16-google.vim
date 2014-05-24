@@ -1,5 +1,5 @@
-" Base16 Tomorrow (https://github.com/chriskempson/base16)
-" Scheme: Chris Kempson (http://chriskempson.com)
+" Base16 Google (https://github.com/chriskempson/base16)
+" Scheme: Seth Wright (http://sethawright.com)
 
 " GUI color definitions
 let s:gui00 = "1d1f21"
@@ -10,14 +10,14 @@ let s:gui04 = "b4b7b4"
 let s:gui05 = "c5c8c6"
 let s:gui06 = "e0e0e0"
 let s:gui07 = "ffffff"
-let s:gui08 = "cc6666"
-let s:gui09 = "de935f"
-let s:gui0A = "f0c674"
-let s:gui0B = "b5bd68"
-let s:gui0C = "8abeb7"
-let s:gui0D = "81a2be"
-let s:gui0E = "b294bb"
-let s:gui0F = "a3685a"
+let s:gui08 = "CC342B"
+let s:gui09 = "F96A38"
+let s:gui0A = "FBA922"
+let s:gui0B = "198844"
+let s:gui0C = "3971ED"
+let s:gui0D = "3971ED"
+let s:gui0E = "A36AC7"
+let s:gui0F = "3971ED"
 
 " Terminal color definitions
 let s:cterm00 = "00"
@@ -49,7 +49,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
-let g:colors_name = "base16-tomorrow"
+let g:colors_name = "base16-google"
 
 " Highlighting function
 fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)

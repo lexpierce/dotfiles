@@ -1,23 +1,23 @@
-" Base16 Tomorrow (https://github.com/chriskempson/base16)
-" Scheme: Chris Kempson (http://chriskempson.com)
+" Base16 Brewer (https://github.com/chriskempson/base16)
+" Scheme: Timothée Poisot (http://github.com/tpoisot)
 
 " GUI color definitions
-let s:gui00 = "1d1f21"
-let s:gui01 = "282a2e"
-let s:gui02 = "373b41"
-let s:gui03 = "969896"
-let s:gui04 = "b4b7b4"
-let s:gui05 = "c5c8c6"
-let s:gui06 = "e0e0e0"
-let s:gui07 = "ffffff"
-let s:gui08 = "cc6666"
-let s:gui09 = "de935f"
-let s:gui0A = "f0c674"
-let s:gui0B = "b5bd68"
-let s:gui0C = "8abeb7"
-let s:gui0D = "81a2be"
-let s:gui0E = "b294bb"
-let s:gui0F = "a3685a"
+let s:gui00 = "0c0d0e"
+let s:gui01 = "2e2f30"
+let s:gui02 = "515253"
+let s:gui03 = "737475"
+let s:gui04 = "959697"
+let s:gui05 = "b7b8b9"
+let s:gui06 = "dadbdc"
+let s:gui07 = "fcfdfe"
+let s:gui08 = "e31a1c"
+let s:gui09 = "e6550d"
+let s:gui0A = "dca060"
+let s:gui0B = "31a354"
+let s:gui0C = "80b1d3"
+let s:gui0D = "3182bd"
+let s:gui0E = "756bb1"
+let s:gui0F = "b15928"
 
 " Terminal color definitions
 let s:cterm00 = "00"
@@ -49,7 +49,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
-let g:colors_name = "base16-tomorrow"
+let g:colors_name = "base16-brewer"
 
 " Highlighting function
 fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)
