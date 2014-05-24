@@ -52,6 +52,11 @@ export RUBYLIB=~/lib/ruby
 fpath=(~/.zsh ~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
 
 # COLORS
+#
+# Base16 Shell
+BASE16_SCHEME="tomorrow"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 # colors
 autoload -U colors
