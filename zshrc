@@ -1,4 +1,4 @@
-export PATH=~/bin:/opt/git/bin:/opt/subversion/bin:/usr/local/bin:${PATH}
+export PATH=~/bin:/opt/mercurial/bin:/usr/local/bin:${PATH}:~/gsutil:~/awscli/bin
 
 # ANTIGEN
 
@@ -373,9 +373,8 @@ function TRAPINT() {
   return $(( 128 + $1 ))
 }
 
-autoload -U promptinit
-promptinit
-
+autoload -U promptinit && promptinit
+PURE_CMD_MAX_EXEC_TIME=60
 prompt pure
 
 RPROMPT='${vim_mode}'
