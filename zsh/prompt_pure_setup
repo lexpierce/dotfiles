@@ -67,7 +67,7 @@ prompt_pure_preexec() {
 	[[ "$SSH_CONNECTION" != '' ]] && print -Pn "(%m) "
 	# shows the current dir and executed command in the title when a process is active
 	# (use print -r to disable potential evaluation of escape characters in cmd)
-	print -Pnr "$PWD:t: $2"
+	print -nr "$PWD:t: $2"
 	print -Pn "\a"
 }
 
@@ -83,7 +83,7 @@ prompt_pure_preprompt_render() {
 
 	# set color for git branch/dirty status, change color if dirty checking has been delayed
 	local git_color=242
-	[[ -n ${prompt_pure_git_delay_dirty_check+x} ]] && git_color=red
+	[[ -n ${prompt_pure_git_last_dirty_check_timestamp+x} ]] && git_color=red
 
 	# construct prompt, beginning with path
 	local prompt="%F{blue}%~%f"
@@ -185,16 +185,16 @@ prompt_pure_async_tasks() {
 	# get the current git working tree, empty if not inside a git directory
 	local working_tree="$(command git rev-parse --show-toplevel 2>/dev/null)"
 
-	# check if the working tree changed, it is prefixed with "x" to prevent variable resolution in path
-	if [ "${prompt_pure_current_working_tree:-x}" != "x${working_tree}" ]; then
+	# check if the working tree changed (prompt_pure_current_working_tree is prefixed by "x")
+	if [[ "${prompt_pure_current_working_tree:-x}" != "x${working_tree}" ]]; then
 		# stop any running async jobs
 		async_flush_jobs "prompt_pure"
 
 		# reset git preprompt variables, switching working tree
 		unset prompt_pure_git_dirty
-		unset prompt_pure_git_delay_dirty_check
+		unset prompt_pure_git_last_dirty_check_timestamp
 
-		# set the new working tree, prefixed with "x"
+		# set the new working tree and prefix with "x" to prevent the creation of a named path by AUTO_NAME_DIRS
 		prompt_pure_current_working_tree="x${working_tree}"
 	fi
 
@@ -209,9 +209,9 @@ prompt_pure_async_tasks() {
 	fi
 
 	# if dirty checking is sufficiently fast, tell worker to check it again, or wait for timeout
-	local dirty_check=$(( $EPOCHSECONDS - ${prompt_pure_git_delay_dirty_check:-0} ))
-	if (( $dirty_check > ${PURE_GIT_DELAY_DIRTY_CHECK:-1800} )); then
-		unset prompt_pure_git_delay_dirty_check
+	local time_since_last_dirty_check=$(( $EPOCHSECONDS - ${prompt_pure_git_last_dirty_check_timestamp:-0} ))
+	if (( $time_since_last_dirty_check > ${PURE_GIT_DELAY_DIRTY_CHECK:-1800} )); then
+		unset prompt_pure_git_last_dirty_check_timestamp
 		# check check if there is anything to pull
 		async_job "prompt_pure" prompt_pure_async_git_dirty "${PURE_GIT_UNTRACKED_DIRTY:-1}" "$working_tree"
 	fi
@@ -227,9 +227,10 @@ prompt_pure_async_callback() {
 			prompt_pure_git_dirty=$output
 			prompt_pure_preprompt_render
 
-			# when prompt_pure_git_delay_dirty_check is set, the git info is displayed in a different color, this is why the
-			# prompt is rendered before the variable is (potentially) set
-			(( $exec_time > 2 )) && prompt_pure_git_delay_dirty_check=$EPOCHSECONDS
+			# When prompt_pure_git_last_dirty_check_timestamp is set, the git info is displayed in a different color.
+			# To distinguish between a "fresh" and a "cached" result, the preprompt is rendered before setting this
+			# variable. Thus, only upon next rendering of the preprompt will the result appear in a different color.
+			(( $exec_time > 2 )) && prompt_pure_git_last_dirty_check_timestamp=$EPOCHSECONDS
 			;;
 		prompt_pure_async_git_fetch)
 			prompt_pure_git_arrows=$(prompt_pure_check_git_arrows)
