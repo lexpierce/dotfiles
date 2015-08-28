@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set nocompatible
 set number
 set history=500
