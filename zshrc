@@ -65,7 +65,7 @@ colors
 TOMORROWNIGHT="mt=38;5;143:sl=:cx=:fn=38;5;139:ln=38;5;222:bn=38;5;143:se=38;5;222"
 
 # colored grep
-export GREP_OPTIONS="--color=auto -n"
+export GREP_OPTIONS="--color=auto"
 export GREP_COLORS=$TOMORROWNIGHT
 
 # colored ls
@@ -75,6 +75,9 @@ alias ls='ls --color=auto'
 
 # make less always work with colored input
 alias less='less -R'
+
+# make cat AWESOME!
+[[ `uname` != "Linux" ]] && alias cat='lolcat'
 
 # make watch always work with colored input
 alias watch='watch --color'
