@@ -20,14 +20,17 @@ colorscheme base16-tomorrow
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set expandtab
 
 filetype plugin on
 filetype indent on
 
 set list listchars=tab:\ \ ,trail:·
+
+" Markdown for .md files.
+au BufNewFile,BufRead *.md set filetype=markdown
 
 set nowrap
 set linebreak
