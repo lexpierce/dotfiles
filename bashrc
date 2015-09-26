@@ -9,6 +9,13 @@
 
 alias ls="ls -FG"
 
+# COLORS
+#
+export BASE16_SCHEME=bright
+# Base16 Shell
+BASE16_SHELL="$HOME/.zsh/base16-${BASE16_SCHEME}.dark.sh"
+[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+
 export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w \$ \[\033[00m\]"
 [[ `uname -n` == "Darwin" ]] && export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w 🍔  \[\033[00m\]"
 

@@ -54,9 +54,9 @@ fpath=(~/.zsh ~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-
 
 # COLORS
 #
+export BASE16_SCHEME=bright
 # Base16 Shell
-BASE16_SCHEME="tomorrow"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+BASE16_SHELL="$HOME/.zsh/base16-${BASE16_SCHEME}.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 # colors
