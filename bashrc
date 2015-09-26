@@ -7,7 +7,7 @@
 
 [[ $- != *i* ]] && return
 
-alias ls="ls -FG"
+alias ls="ls -FG --color=auto"
 
 # COLORS
 #
@@ -17,7 +17,8 @@ BASE16_SHELL="$HOME/.zsh/base16-${BASE16_SCHEME}.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w \$ \[\033[00m\]"
-[[ `uname -n` == "Darwin" ]] && export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w 🍔  \[\033[00m\]"
+[[ "${SSH_CONNECTION}" != '' ]] && export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w \$ \[\033[00m\]"
+# [[ `uname -n` == "Darwin" ]] && export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w 🍔  \[\033[00m\]"
 
 set -o ignoreeof
 set -o vi
