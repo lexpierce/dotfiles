@@ -16,7 +16,7 @@ set undodir=~/.vim/backups
 set undofile
 set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-bright
+colorscheme base16-3024
 
 set autoindent
 set smartindent
