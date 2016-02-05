@@ -1,4 +1,4 @@
-export PATH=~/bin:/opt/mercurial/bin:/usr/local/bin:${PATH}:~/gsutil:~/awscli/bin
+export PATH=~/bin:/opt/mercurial/bin:/usr/local/bin:/opt/local/bin:${PATH}:~/gsutil:~/awscli/bin
 
 # ANTIGEN
 
