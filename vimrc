@@ -25,6 +25,7 @@ set smarttab
 set shiftwidth=2
 set tabstop=2
 set expandtab
+set laststatus=2
 
 filetype plugin on
 filetype indent on
