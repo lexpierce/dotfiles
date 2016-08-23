@@ -1,3 +1,9 @@
 [submodule "vim/bundle/vim-tmux"]
 	path = vim/bundle/vim-tmux
 	url = git://github.com/tmux-plugins/vim-tmux.git
+[submodule "zim"]
+	path = zim
+	url = https://github.com/Eriner/zim.git
+[submodule "vim/colors/base16"]
+	path = vim/colors/base16
+	url = https://github.com/chriskempson/base16-vim.git

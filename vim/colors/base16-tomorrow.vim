@@ -1,5 +1,6 @@
-" Base16 Tomorrow (https://github.com/chriskempson/base16)
-" Scheme: Chris Kempson (http://chriskempson.com)
+" base16-vim (https://github.com/chriskempson/base16-vim)
+" by Chris Kempson (http://chriskempson.com)
+" Tomorrow scheme by Chris Kempson (http://chriskempson.com)
 
 " This enables the coresponding base16-shell script to run so that
 " :colorscheme works in terminals supported by base16-shell scripts
@@ -7,26 +8,26 @@
 "   let g:base16_shell_path=base16-builder/output/shell/
 if !has('gui_running')
   if exists("g:base16_shell_path")
-    execute "silent !/bin/sh ".g:base16_shell_path."/base16-tomorrow.".&background.".sh"
+    execute "silent !/bin/sh ".g:base16_shell_path."/base16-tomorrow.sh"
   endif
 endif
 
 " GUI color definitions
-let s:gui00 = "1d1f21"
-let s:gui01 = "282a2e"
-let s:gui02 = "373b41"
-let s:gui03 = "969896"
-let s:gui04 = "b4b7b4"
-let s:gui05 = "c5c8c6"
-let s:gui06 = "e0e0e0"
-let s:gui07 = "ffffff"
-let s:gui08 = "cc6666"
-let s:gui09 = "de935f"
-let s:gui0A = "f0c674"
-let s:gui0B = "b5bd68"
-let s:gui0C = "8abeb7"
-let s:gui0D = "81a2be"
-let s:gui0E = "b294bb"
+let s:gui00 = "ffffff"
+let s:gui01 = "e0e0e0"
+let s:gui02 = "d6d6d6"
+let s:gui03 = "8e908c"
+let s:gui04 = "969896"
+let s:gui05 = "4d4d4c"
+let s:gui06 = "282a2e"
+let s:gui07 = "1d1f21"
+let s:gui08 = "c82829"
+let s:gui09 = "f5871f"
+let s:gui0A = "eab700"
+let s:gui0B = "718c00"
+let s:gui0C = "3e999f"
+let s:gui0D = "4271ae"
+let s:gui0E = "8959a8"
 let s:gui0F = "a3685a"
 
 " Terminal color definitions
@@ -64,16 +65,16 @@ let g:colors_name = "base16-tomorrow"
 " Highlighting function
 fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
   if a:guifg != ""
-    exec "hi " . a:group . " guifg=#" . s:gui(a:guifg)
+    exec "hi " . a:group . " guifg=#" . a:guifg
   endif
   if a:guibg != ""
-    exec "hi " . a:group . " guibg=#" . s:gui(a:guibg)
+    exec "hi " . a:group . " guibg=#" . a:guibg
   endif
   if a:ctermfg != ""
-    exec "hi " . a:group . " ctermfg=" . s:cterm(a:ctermfg)
+    exec "hi " . a:group . " ctermfg=" . a:ctermfg
   endif
   if a:ctermbg != ""
-    exec "hi " . a:group . " ctermbg=" . s:cterm(a:ctermbg)
+    exec "hi " . a:group . " ctermbg=" . a:ctermbg
   endif
   if a:attr != ""
     exec "hi " . a:group . " gui=" . a:attr . " cterm=" . a:attr
@@ -81,60 +82,6 @@ fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
   if a:guisp != ""
     exec "hi " . a:group . " guisp=#" . a:guisp
   endif
-endfun
-
-" Return GUI color for light/dark variants
-fun s:gui(color)
-  if &background == "dark"
-    return a:color
-  endif
-
-  if a:color == s:gui00
-    return s:gui07
-  elseif a:color == s:gui01
-    return s:gui06
-  elseif a:color == s:gui02
-    return s:gui05
-  elseif a:color == s:gui03
-    return s:gui04
-  elseif a:color == s:gui04
-    return s:gui03
-  elseif a:color == s:gui05
-    return s:gui02
-  elseif a:color == s:gui06
-    return s:gui01
-  elseif a:color == s:gui07
-    return s:gui00
-  endif
-
-  return a:color
-endfun
-
-" Return terminal color for light/dark variants
-fun s:cterm(color)
-  if &background == "dark"
-    return a:color
-  endif
-
-  if a:color == s:cterm00
-    return s:cterm07
-  elseif a:color == s:cterm01
-    return s:cterm06
-  elseif a:color == s:cterm02
-    return s:cterm05
-  elseif a:color == s:cterm03
-    return s:cterm04
-  elseif a:color == s:cterm04
-    return s:cterm03
-  elseif a:color == s:cterm05
-    return s:cterm02
-  elseif a:color == s:cterm06
-    return s:cterm01
-  elseif a:color == s:cterm07
-    return s:cterm00
-  endif
-
-  return a:color
 endfun
 
 " Vim editor colors
@@ -146,14 +93,14 @@ call <sid>hi("ErrorMsg",      s:gui08, s:gui00, s:cterm08, s:cterm00, "", "")
 call <sid>hi("Exception",     s:gui08, "", s:cterm08, "", "", "")
 call <sid>hi("FoldColumn",    s:gui0C, s:gui01, s:cterm0C, s:cterm01, "", "")
 call <sid>hi("Folded",        s:gui03, s:gui01, s:cterm03, s:cterm01, "", "")
-call <sid>hi("IncSearch",     s:gui01, s:gui09, s:cterm01, s:cterm09, "none", "")
+call <sid>hi("IncSearch",     s:gui01, s:gui0A, s:cterm01, s:cterm0A, "none", "")
 call <sid>hi("Italic",        "", "", "", "", "none", "")
 call <sid>hi("Macro",         s:gui08, "", s:cterm08, "", "", "")
 call <sid>hi("MatchParen",    s:gui00, s:gui03, s:cterm00, s:cterm03,  "", "")
 call <sid>hi("ModeMsg",       s:gui0B, "", s:cterm0B, "", "", "")
 call <sid>hi("MoreMsg",       s:gui0B, "", s:cterm0B, "", "", "")
 call <sid>hi("Question",      s:gui0D, "", s:cterm0D, "", "", "")
-call <sid>hi("Search",        s:gui03, s:gui0A, s:cterm03, s:cterm0A,  "", "")
+call <sid>hi("Search",        s:gui01, s:gui0A, s:cterm01, s:cterm0A,  "", "")
 call <sid>hi("SpecialKey",    s:gui03, "", s:cterm03, "", "", "")
 call <sid>hi("TooLong",       s:gui08, "", s:cterm08, "", "", "")
 call <sid>hi("Underlined",    s:gui08, "", s:cterm08, "", "", "")
@@ -318,8 +265,6 @@ call <sid>hi("SpellRare",    "", s:gui00, "", s:cterm00, "undercurl", s:gui0E)
 
 " Remove functions
 delf <sid>hi
-delf <sid>gui
-delf <sid>cterm
 
 " Remove color variables
 unlet s:gui00 s:gui01 s:gui02 s:gui03  s:gui04  s:gui05  s:gui06  s:gui07  s:gui08  s:gui09 s:gui0A  s:gui0B  s:gui0C  s:gui0D  s:gui0E  s:gui0F

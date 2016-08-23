@@ -1,5 +1,3 @@
-" execute pathogen#infect()
-
 set nocompatible
 set number
 set history=500
@@ -15,8 +13,10 @@ silent !mkdir ~/.vim/backups
 set undodir=~/.vim/backups
 set undofile
 set background=dark
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-3024
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256  " Access colors present in 256 colorspace
+  source ~/.vimrc_background
+endif
 let g:airline_theme='base16_3024'
 
 set autoindent

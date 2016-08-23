@@ -1,26 +1,14 @@
+#
+# User configuration sourced by interactive shells
+#
+
+# Source zim
+if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
+  source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
+fi
+
 export PATH=~/bin:/opt/mercurial/bin:/usr/local/bin:/opt/local/bin:${PATH}:~/gsutil:~/awscli/bin
 
-# ANTIGEN
-
-# directory to store cloned antigen repositories
-export ADOTDIR=~/.zsh
-
-# load antigen
-source ~/.zsh/antigen.zsh
-
-# define the plugins
-##antigen-bundle olivierverdier/zsh-git-prompt
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen bundle Peeja/ctrl-zsh
-antigen bundle pjg/zsh-vim-plugin
-
-# load the plugins
-antigen apply
-
-# BASICS
-
-# umask
 umask 022
 
 # editor/visual/pager
@@ -50,22 +38,22 @@ export PYTHONPATH=~/lib/python
 export RUBYLIB=~/lib/ruby
 
 # fpath (for zsh-completions)
-fpath=(~/.zsh ~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
+# fpath=(~/.zsh  $fpath)
 
 # COLORS
 #
-export BASE16_SCHEME=3024
-# Base16 Shell
-BASE16_SHELL="$HOME/.colors/base16-${BASE16_SCHEME}.dark.sh"
-[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+base16_3024
 
 # colors
-autoload -U colors
-colors
-TOMORROWNIGHT="mt=38;5;143:sl=:cx=:fn=38;5;139:ln=38;5;222:bn=38;5;143:se=38;5;222"
+#autoload -U colors
+#colors
+#TOMORROWNIGHT="mt=38;5;143:sl=:cx=:fn=38;5;139:ln=38;5;222:bn=38;5;143:se=38;5;222"
 
 # colored grep
-export GREP_COLORS=$TOMORROWNIGHT
+#export GREP_COLORS=$TOMORROWNIGHT
 alias grep='grep --color=auto'
 
 # colored ls
@@ -92,31 +80,21 @@ alias vi='vim'
 
 # uses git blame to calculate code ownership (source: http://stackoverflow.com/questions/4589731/git-blame-statistics)
 function fame {
-  git ls-tree -r HEAD | cut -f 2 | grep -E '\.(cc|h|cpp|hpp|c|py|coffee|rb)$' \
-    | xargs -n1 git blame --line-porcelain \
-    | grep -Pzo "author [^\n]*\n([^\n]*\n){10}[\w]*[^\w]" | grep "author " \
-    | sort | uniq -c | sort -nr
+git ls-tree -r HEAD | cut -f 2 | grep -E '\.(cc|h|cpp|hpp|c|py|coffee|rb)$' \
+  | xargs -n1 git blame --line-porcelain \
+  | grep -Pzo "author [^\n]*\n([^\n]*\n){10}[\w]*[^\w]" | grep "author " \
+  | sort | uniq -c | sort -nr
 }
 
-# cd
-alias -- -='cd -'
-alias ..='cd ..'
-alias ...='cd ../..'
-
-# subversion
-alias svndiff='svn diff --diff-cmd=colordiff'
-alias svnaddall='svn status | awk "/\\?/ {print \$2}" | xargs svn add'
-
-# htop
 if [[ -x `which htop` ]]; then alias top="htop"; fi
 
 # vim - load tmp/current.vim if it exist and no params to vim are passed (aka vim is aliased to v)
 function v() {
 if (( $# == 0 )) && [[ -f tmp/current.vim ]]; then
-    vim -S tmp/current.vim
-  else
-    vim "$@"
-  fi
+  vim -S tmp/current.vim
+else
+  vim "$@"
+fi
 }
 
 # misc
@@ -134,89 +112,89 @@ alias -g L='| less'
 alias -g M='| more'
 alias -g S='&> /dev/null'
 
-# HISTORY
-
-# zsh history
-export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=10000
-export SAVEHIST=${HISTSIZE}
-
-# multiple zsh sessions will append to the same history file (incrementally, after each command is executed)
-setopt inc_append_history
-
-# purge duplicates first
-setopt hist_expire_dups_first
-
-# if a new command line being added to the history list duplicates an older one, the older command is removed from the list
-setopt hist_ignore_all_dups
-
-# reduce unnecessary blanks from commands being written to history
-setopt hist_reduce_blanks
-
-# import new commands from history (mostly)
-setopt share_history
+## HISTORY
+#
+## zsh history
+#export HISTFILE="$HOME/.zsh_history"
+#export HISTSIZE=10000
+#export SAVEHIST=${HISTSIZE}
+#
+## multiple zsh sessions will append to the same history file (incrementally, after each command is executed)
+#setopt inc_append_history
+#
+## purge duplicates first
+#setopt hist_expire_dups_first
+#
+## if a new command line being added to the history list duplicates an older one, the older command is removed from the list
+#setopt hist_ignore_all_dups
+#
+## reduce unnecessary blanks from commands being written to history
+#setopt hist_reduce_blanks
+#
+## import new commands from history (mostly)
+#setopt share_history
 
 # COMMAND COMPLETION
-
-# treat `#', `~' and `^' characters as part of patterns for filename generation
-setopt extended_glob
-
-# case insensitive matching when performing filename expansion
-setopt no_case_glob
-
-# if command not found, but directory found, cd into this directory
-setopt auto_cd
-
-# turn off automatic matching of ~/ directories (speeds things up)
-setopt no_cdable_vars
-
-# perform implicit tees or cats when multiple redirections are attempted
-setopt multios
-
-# do not send the HUP signal to backround jobs on shell exit
-setopt no_hup
-
-# parameter expansion, command substitution and arithmetic expansion are performed in prompts
-setopt prompt_subst
-
-# speed-up the git completion for filenames
-__git_files () {
-  _wanted files expl 'local files' _files
-}
-
-# fuzzy matching for typos
-zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
-# cd will never select parent
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
-
-# tab completion for PIDs
-zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm,command -w -w"
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:kill:*' force-list always
-
-# zsh completions chache
-CACHEDIR="$HOME/.zsh/cache"
-
-# create $CACHEDIR if it does not exist
-if [ ! -d $CACHEDIR ]; then
-  mkdir -p $CACHEDIR
-fi
-
-# cache completions
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path $CACHEDIR
-
-# load completions
-autoload -U compinit
-compinit -d $CACHEDIR/zcompdump
-
-# If a pattern for filename generation has no matches, print an error,
-# instead of leaving it unchanged in the argument list. This also
-# applies to file expansion of an initial ~ or =.
-unsetopt nomatch
+#
+## treat `#', `~' and `^' characters as part of patterns for filename generation
+#setopt extended_glob
+#
+## case insensitive matching when performing filename expansion
+#setopt no_case_glob
+#
+## if command not found, but directory found, cd into this directory
+#setopt auto_cd
+#
+## turn off automatic matching of ~/ directories (speeds things up)
+#setopt no_cdable_vars
+#
+## perform implicit tees or cats when multiple redirections are attempted
+#setopt multios
+#
+## do not send the HUP signal to backround jobs on shell exit
+#setopt no_hup
+#
+## parameter expansion, command substitution and arithmetic expansion are performed in prompts
+#setopt prompt_subst
+#
+## speed-up the git completion for filenames
+#__git_files () {
+#  _wanted files expl 'local files' _files
+#}
+#
+## fuzzy matching for typos
+#zstyle ':completion:*' completer _complete _match _approximate
+#zstyle ':completion:*:match:*' original only
+#zstyle ':completion:*:approximate:*' max-errors 1 numeric
+#
+## cd will never select parent
+#zstyle ':completion:*:cd:*' ignore-parents parent pwd
+#
+## tab completion for PIDs
+#zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm,command -w -w"
+#zstyle ':completion:*:*:kill:*' menu yes select
+#zstyle ':completion:*:kill:*' force-list always
+#
+## zsh completions chache
+#CACHEDIR="$HOME/.zsh/cache"
+#
+## create $CACHEDIR if it does not exist
+#if [ ! -d $CACHEDIR ]; then
+#  mkdir -p $CACHEDIR
+#fi
+#
+## cache completions
+#zstyle ':completion:*' use-cache on
+#zstyle ':completion:*' cache-path $CACHEDIR
+#
+## load completions
+#autoload -U compinit
+#compinit -d $CACHEDIR/zcompdump
+#
+## If a pattern for filename generation has no matches, print an error,
+## instead of leaving it unchanged in the argument list. This also
+## applies to file expansion of an initial ~ or =.
+#unsetopt nomatch
 
 # ZLE WIDGETS
 
@@ -230,96 +208,96 @@ zle -N history-beginning-search-backward-then-append
 # Delete all characters between a pair of characters. Mimics vim's "di" text object functionality
 function delete-in {
 
-  # Create locally-scoped variables we'll need
-  local CHAR LCHAR RCHAR LSEARCH RSEARCH COUNT
+# Create locally-scoped variables we'll need
+local CHAR LCHAR RCHAR LSEARCH RSEARCH COUNT
 
-  # Read the character to indicate which text object we're deleting
-  read -k CHAR
+# Read the character to indicate which text object we're deleting
+read -k CHAR
 
-  if [ "$CHAR" = "w" ]
-  then
-    # diw, delete the word
+if [ "$CHAR" = "w" ]
+then
+  # diw, delete the word
 
-    # find the beginning of the word under the cursor
-    zle vi-backward-word
+  # find the beginning of the word under the cursor
+  zle vi-backward-word
 
-    # set the left side of the delete region at this point
-    LSEARCH=$CURSOR
+  # set the left side of the delete region at this point
+  LSEARCH=$CURSOR
 
-    # find the end of the word under the cursor
-    zle vi-forward-word
+  # find the end of the word under the cursor
+  zle vi-forward-word
 
-    # set the right side of the delete region at this point
-    RSEARCH=$CURSOR
+  # set the right side of the delete region at this point
+  RSEARCH=$CURSOR
 
-    # Set the BUFFER to everything except the word we are removing
-    RBUFFER="$BUFFER[$RSEARCH+1,${#BUFFER}]"
-    LBUFFER="$LBUFFER[1,$LSEARCH]"
+  # Set the BUFFER to everything except the word we are removing
+  RBUFFER="$BUFFER[$RSEARCH+1,${#BUFFER}]"
+  LBUFFER="$LBUFFER[1,$LSEARCH]"
 
-    return
+  return
 
   # diw was unique.  For everything else, we just have to define the
   # characters to the left and right of the cursor to be removed
-  elif [ "$CHAR" = "(" ] || [ "$CHAR" = ")" ] || [ "$CHAR" = "b" ]
-  then
-    # di), delete inside of a pair of parenthesis
-    LCHAR="("
-    RCHAR=")"
+elif [ "$CHAR" = "(" ] || [ "$CHAR" = ")" ] || [ "$CHAR" = "b" ]
+then
+  # di), delete inside of a pair of parenthesis
+  LCHAR="("
+  RCHAR=")"
 
-  elif [ "$CHAR" = "[" ] || [ "$CHAR" = "]" ]
-  then
-    # di], delete inside of a pair of square brackets
-    LCHAR="["
-    RCHAR="]"
+elif [ "$CHAR" = "[" ] || [ "$CHAR" = "]" ]
+then
+  # di], delete inside of a pair of square brackets
+  LCHAR="["
+  RCHAR="]"
 
-  elif [ $CHAR = "{" ] || [ $CHAR = "}" ] || [ "$CHAR" = "B" ]
-  then
-    # di}, delete inside of a pair of braces
-    LCHAR="{"
-    RCHAR="}"
+elif [ $CHAR = "{" ] || [ $CHAR = "}" ] || [ "$CHAR" = "B" ]
+then
+  # di}, delete inside of a pair of braces
+  LCHAR="{"
+  RCHAR="}"
 
-  else
-    # The character entered does not have a special definition.
-    # Simply find the first instance to the left and right of the cursor.
-    LCHAR="$CHAR"
-    RCHAR="$CHAR"
-  fi
+else
+  # The character entered does not have a special definition.
+  # Simply find the first instance to the left and right of the cursor.
+  LCHAR="$CHAR"
+  RCHAR="$CHAR"
+fi
 
-  # Find the first instance of LCHAR to the left of the cursor and the
-  # first instance of RCHAR to the right of the cursor, and remove everything in between.
-  # Begin the search for the left-sided character directly the left of the cursor
-  LSEARCH=${#LBUFFER}
+# Find the first instance of LCHAR to the left of the cursor and the
+# first instance of RCHAR to the right of the cursor, and remove everything in between.
+# Begin the search for the left-sided character directly the left of the cursor
+LSEARCH=${#LBUFFER}
 
-  # Keep going left until we find the character or hit the beginning of the buffer
-  while [ "$LSEARCH" -gt 0 ] && [ "$LBUFFER[$LSEARCH]" != "$LCHAR" ]
-  do
-    LSEARCH=$(expr $LSEARCH - 1)
-  done
+# Keep going left until we find the character or hit the beginning of the buffer
+while [ "$LSEARCH" -gt 0 ] && [ "$LBUFFER[$LSEARCH]" != "$LCHAR" ]
+do
+  LSEARCH=$(expr $LSEARCH - 1)
+done
 
-  # If we hit the beginning of the command line without finding the character, abort
-  if [ "$LBUFFER[$LSEARCH]" != "$LCHAR" ]
-  then
-    return
-  fi
+# If we hit the beginning of the command line without finding the character, abort
+if [ "$LBUFFER[$LSEARCH]" != "$LCHAR" ]
+then
+  return
+fi
 
-  # start the search directly to the right of the cursor
-  RSEARCH=0
+# start the search directly to the right of the cursor
+RSEARCH=0
 
-  # Keep going right until we find the character or hit the end of the buffer
-  while [ "$RSEARCH" -lt $(expr ${#RBUFFER} + 1 ) ] && [ "$RBUFFER[$RSEARCH]" != "$RCHAR" ]
-  do
-    RSEARCH=$(expr $RSEARCH + 1)
-  done
+# Keep going right until we find the character or hit the end of the buffer
+while [ "$RSEARCH" -lt $(expr ${#RBUFFER} + 1 ) ] && [ "$RBUFFER[$RSEARCH]" != "$RCHAR" ]
+do
+  RSEARCH=$(expr $RSEARCH + 1)
+done
 
-  # If we hit the end of the command line without finding the character, abort
-  if [ "$RBUFFER[$RSEARCH]" != "$RCHAR" ]
-  then
-    return
-  fi
+# If we hit the end of the command line without finding the character, abort
+if [ "$RBUFFER[$RSEARCH]" != "$RCHAR" ]
+then
+  return
+fi
 
-  # Set the BUFFER to everything except the text we are removing
-  RBUFFER="$RBUFFER[$RSEARCH,${#RBUFFER}]"
-  LBUFFER="$LBUFFER[1,$LSEARCH]"
+# Set the BUFFER to everything except the text we are removing
+RBUFFER="$RBUFFER[$RSEARCH,${#RBUFFER}]"
+LBUFFER="$LBUFFER[1,$LSEARCH]"
 }
 
 zle -N delete-in
@@ -327,58 +305,58 @@ zle -N delete-in
 # Delete all characters between a pair of characters and then go to insert mode
 # Mimics vim's "ci" text object functionality.
 function change-in {
-  zle delete-in
-  zle vi-insert
+zle delete-in
+zle vi-insert
 }
 zle -N change-in
 
 # Delete all characters between a pair of characters as well as the surrounding
 # characters themselves. Mimics vim's "da" text object functionality
 function delete-around {
-  zle delete-in
-  zle vi-backward-char
-  zle vi-delete-char
-  zle vi-delete-char
+zle delete-in
+zle vi-backward-char
+zle vi-delete-char
+zle vi-delete-char
 }
 zle -N delete-around
 
 # Delete all characters between a pair of characters as well as the surrounding
 # characters themselves and then go into insert mode. Mimics vim's "ca" text object functionality.
 function change-around {
-  zle delete-in
-  zle vi-backward-char
-  zle vi-delete-char
-  zle vi-delete-char
-  zle vi-insert
+zle delete-in
+zle vi-backward-char
+zle vi-delete-char
+zle vi-delete-char
+zle vi-insert
 }
 zle -N change-around
 
 # vim mode indicator in prompt (http://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode)
-vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
+vim_ins_mode="%F{cyan}[INS]$fx[reset]"
+vim_cmd_mode="%F{green}[CMD]$fx[reset]"
 vim_mode=$vim_ins_mode
 
 function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
+vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+zle reset-prompt
 }
 zle -N zle-keymap-select
 
 function zle-line-finish {
-  vim_mode=$vim_ins_mode
+vim_mode=$vim_ins_mode
 }
 zle -N zle-line-finish
 
 # Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
 # Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
-function TRAPINT() {
-  vim_mode=$vim_ins_mode
-  return $(( 128 + $1 ))
-}
+#function TRAPINT() {
+#  vim_mode=$vim_ins_mode
+#  return $(( 128 + $1 ))
+#}
 
-autoload -U promptinit && promptinit
+#autoload -U promptinit && promptinit
 PURE_CMD_MAX_EXEC_TIME=60
-prompt pure
+#prompt pure
 
 RPROMPT='${vim_mode}'
 
@@ -485,28 +463,28 @@ case "$TERM" in
     bindkey -M vicmd '\ed'   kill-word                         # Alt-d
     bindkey -M vicmd '\e[5~' history-beginning-search-backward # PageUp
     bindkey -M vicmd '\e[6~' history-beginning-search-forward  # PageDown
-  ;;
+    ;;
 esac
 
 
 # SPELLING CORRECTIONS
-
-# limit correction only to commands
-setopt correct
-
-# When offering typo corrections, do not propose anything which starts with an underscore (such as many of Zsh's shell functions)
-CORRECT_IGNORE='_*'
-
-# general exceptions
-for i in {'cp','git','gist','man','mv','mysql','mkdir'}; do
-  alias $i="nocorrect $i"
-done
-
-# ruby/rails exceptions
-for i in {'bundle','cap','capify','cucumber','foreman','gem','guard','heroku','puma','pry','rake','rspec','ruby','spec','spork','thin'}; do
-  alias $i="nocorrect $i"
-done
-
+#
+## limit correction only to commands
+#setopt correct
+#
+## When offering typo corrections, do not propose anything which starts with an underscore (such as many of Zsh's shell functions)
+#CORRECT_IGNORE='_*'
+#
+## general exceptions
+#for i in {'cp','git','gist','man','mv','mysql','mkdir'}; do
+#  alias $i="nocorrect $i"
+#done
+#
+## ruby/rails exceptions
+#for i in {'bundle','cap','capify','cucumber','foreman','gem','guard','heroku','puma','pry','rake','rspec','ruby','spec','spork','thin'}; do
+#  alias $i="nocorrect $i"
+#done
+#
 
 
 # MISC STUFF
@@ -541,4 +519,4 @@ REPORTTIME=10
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 [ -x /usr/bin/xdpyinfo ] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
-# vim:ts=4:sw=4
+source ${HOME}/.iterm2_shell_integration.zsh
