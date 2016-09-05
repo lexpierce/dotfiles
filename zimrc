@@ -12,8 +12,8 @@
 # The second line of modules may depend on options set by modules in the first line.
 # These dependencies are noted on the respective module's README.md.
 zmodules=(directory environment git history input utility custom spectrum \
-          syntax-highlighting history-substring-search prompt completion)
-# archive fasd pacman spectrum ssh
+          syntax-highlighting history-substring-search prompt completion meta)
+# archive fasd pacman ssh
 
 
 ###################
@@ -25,7 +25,7 @@ zmodules=(directory environment git history input utility custom spectrum \
 #
 
 # Set your desired prompt here
-zprompt_theme='lean'
+zprompt_theme='pure'
 
 #
 # Completion
