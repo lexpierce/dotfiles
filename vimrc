@@ -14,7 +14,7 @@ set undodir=~/.vim/backups
 set undofile
 set background=dark
 if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256  " Access colors present in 256 colorspace
+  let base16colorspace=256
   source ~/.vimrc_background
 endif
 let g:airline_theme='base16_3024'

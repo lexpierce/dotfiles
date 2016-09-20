@@ -69,7 +69,7 @@ zhighlighters=(main brackets cursor)
 #
 
 # Load these ssh identities with the ssh module
-zssh_ids=(alex_ed25519_201609 alex_rsa_201609)
+zssh_ids=(alex_ed25519_201609 alex_rsa_201609 pepperdata_rsa)
 
 
 #
