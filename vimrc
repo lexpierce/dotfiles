@@ -1,4 +1,6 @@
 set nocompatible
+filetype off
+let &runtimepath.=',~/.vim/bundle/ale'
 set number
 set history=500
 set showcmd

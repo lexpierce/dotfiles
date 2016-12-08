@@ -57,12 +57,12 @@ base16_3024
 alias grep='grep --color=auto'
 
 # colored ls
-[[ `uname` == "Linux" ]] && eval "`dircolors -b`"
-alias ls='ls --color=auto'
-[[ `uname` != "Linux" ]] && alias ls='ls -FG'
+# [[ `uname` == "Linux" ]] && eval "`dircolors -b`"
+# alias ls='ls --color=auto'
+# [[ `uname` != "Linux" ]] && alias ls='ls -FG'
 
 # make less always work with colored input
-alias less='less -R'
+# alias less='less -R'
 
 # make cat AWESOME!
 [[ `uname` != "Linux" ]] && alias cat='lolcat'
@@ -519,4 +519,30 @@ REPORTTIME=10
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 [ -x /usr/bin/xdpyinfo ] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
+# NVM (Node.js Version Manager)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" != "N/A" ] && [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use 
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+
 source ${HOME}/.iterm2_shell_integration.zsh
+#ponysay -b round -q
+ponysay -F rainbow -b round "Welcome to the bananastand!"
