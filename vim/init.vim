@@ -1,1 +1,1 @@
-/home/lexpierce/.vimrc
+/Users/lexpierce/.vimrc
