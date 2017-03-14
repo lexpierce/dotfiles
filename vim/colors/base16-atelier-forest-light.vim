@@ -2,7 +2,7 @@
 
 " base16-vim (https://github.com/chriskempson/base16-vim)
 " by Chris Kempson (http://chriskempson.com)
-" IR Black scheme by Timothée Poisot (http://timotheepoisot.fr)
+" Atelier Forest scheme by Bram de Haan (http://atelierbramdehaan.nl)
 
 " This enables the coresponding base16-shell script to run so that
 " :colorscheme works in terminals supported by base16-shell scripts
@@ -10,27 +10,27 @@
 "   let g:base16_shell_path=base16-builder/output/shell/
 if !has('gui_running')
   if exists("g:base16_shell_path")
-    execute "silent !/bin/sh ".g:base16_shell_path."/base16-ir-black.sh"
+    execute "silent !/bin/sh ".g:base16_shell_path."/base16-atelier-forest-light.sh"
   endif
 endif
 
 " GUI color definitions
-let s:gui00 = "000000"
-let s:gui01 = "242422"
-let s:gui02 = "484844"
-let s:gui03 = "6c6c66"
-let s:gui04 = "918f88"
-let s:gui05 = "b5b3aa"
-let s:gui06 = "d9d7cc"
-let s:gui07 = "fdfbee"
-let s:gui08 = "ff6c60"
-let s:gui09 = "e9c062"
-let s:gui0A = "ffffb6"
-let s:gui0B = "a8ff60"
-let s:gui0C = "c6c5fe"
-let s:gui0D = "96cbfe"
-let s:gui0E = "ff73fd"
-let s:gui0F = "b18a3d"
+let s:gui00 = "f1efee"
+let s:gui01 = "e6e2e0"
+let s:gui02 = "a8a19f"
+let s:gui03 = "9c9491"
+let s:gui04 = "766e6b"
+let s:gui05 = "68615e"
+let s:gui06 = "2c2421"
+let s:gui07 = "1b1918"
+let s:gui08 = "f22c40"
+let s:gui09 = "df5320"
+let s:gui0A = "c38418"
+let s:gui0B = "7b9726"
+let s:gui0C = "3d97b8"
+let s:gui0D = "407ee7"
+let s:gui0E = "6666ea"
+let s:gui0F = "c33ff3"
 
 " Terminal color definitions
 let s:cterm00 = "00"
@@ -62,7 +62,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
-let g:colors_name = "base16-ir-black"
+let g:colors_name = "base16-atelier-forest-light"
 
 " Highlighting function
 fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
@@ -98,7 +98,7 @@ call <sid>hi("Folded",        s:gui03, s:gui01, s:cterm03, s:cterm01, "", "")
 call <sid>hi("IncSearch",     s:gui01, s:gui09, s:cterm01, s:cterm09, "none", "")
 call <sid>hi("Italic",        "", "", "", "", "none", "")
 call <sid>hi("Macro",         s:gui08, "", s:cterm08, "", "", "")
-call <sid>hi("MatchParen",    s:gui00, s:gui03, "", s:cterm03,  "", "")
+call <sid>hi("MatchParen",    "", s:gui03, "", s:cterm03,  "", "")
 call <sid>hi("ModeMsg",       s:gui0B, "", s:cterm0B, "", "", "")
 call <sid>hi("MoreMsg",       s:gui0B, "", s:cterm0B, "", "", "")
 call <sid>hi("Question",      s:gui0D, "", s:cterm0D, "", "", "")
@@ -223,6 +223,7 @@ call <sid>hi("javaScriptBraces",  s:gui05, "", s:cterm05, "", "", "")
 call <sid>hi("javaScriptNumber",  s:gui09, "", s:cterm09, "", "", "")
 " pangloss/vim-javascript highlighting
 call <sid>hi("jsOperator",          s:gui0D, "", s:cterm0D, "", "", "")
+call <sid>hi("jsStatement",         s:gui0E, "", s:cterm0E, "", "", "")
 call <sid>hi("jsReturn",            s:gui0E, "", s:cterm0E, "", "", "")
 call <sid>hi("jsThis",              s:gui08, "", s:cterm08, "", "", "")
 call <sid>hi("jsClassDefinition",   s:gui0A, "", s:cterm0A, "", "", "")
