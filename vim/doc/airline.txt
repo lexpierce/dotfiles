@@ -102,9 +102,12 @@ values):
     endif
   endfunction
 <
-* enable/disable automatic population of the `g:airline_symbols` dictionary
-  with powerline symbols. >
-  let g:airline_powerline_fonts=0
+* By default, airline will use unicode symbols if your encoding matches
+  utf-8. If you want the powerline symbols set this variable: >
+  let g:airline_powerline_fonts = 1
+<
+  If you want to use plain ascii symbols, set this variable: >
+  let g:airline_symbols_ascii = 1
 <
 * define the set of text to display for each mode.  >
   let g:airline_mode_map = {} " see source for the defaults
@@ -486,6 +489,10 @@ eclim <https://eclim.org>
 * enable/disable detection of whitespace errors. >
   let g:airline#extensions#whitespace#enabled = 1
 <
+* disable detection of whitespace errors. >
+  " useful to call for particular file types (e.g., in "ftplugin/*")
+  silent! call airline#extensions#whitespace#disable()
+<
 * customize the type of mixed indent checking to perform. >
   " must be all spaces or all tabs before the first non-whitespace character
   let g:airline#extensions#whitespace#mixed_indent_algo = 0 (default)
@@ -550,9 +557,10 @@ are supported!
 * enable/disable displaying open splits per tab (only when tabs are opened). >
   let g:airline#extensions#tabline#show_splits = 1
     *
-* switch position of buffers and tabs on splited tabline (c)
+* switch position of buffers and tabs on splited tabline (c) 
+  (only supported for ctrlspace plugin). >
   let g:airline#extensions#tabline#switch_buffers_and_tabs = 0
-
+<
 * enable/disable displaying buffers with a single tab. (c)
   let g:airline#extensions#tabline#show_buffers = 1
 <
@@ -801,10 +809,10 @@ vim-ctrlspace <https://github.com/szw/vim-ctrlspace>
 
 * enable/disable vim-ctrlspace integration >
   let g:airline#extensions#ctrlspace#enabled = 1
-
+<
   To make the vim-ctrlspace integration work you will need to make the
   ctrlspace statusline function call the correct airline function. Therefore
-  add the following line into your .vimrc:
+  add the following line into your .vimrc: >
 
   let g:CtrlSpaceStatuslineFunction = "airline#extensions#ctrlspace#statusline()"
 <
