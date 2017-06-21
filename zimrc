@@ -13,7 +13,7 @@
 # These dependencies are noted on the respective module's README.md.
 zmodules=(directory environment git history input utility custom spectrum \
           syntax-highlighting history-substring-search prompt completion \
-          ssh meta)
+          ssh meta autosuggestions)
 # archive fasd pacman ssh
 
 

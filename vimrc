@@ -19,7 +19,9 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+
 let g:airline_theme='base16_3024'
+let g:ansible_unindent_after_newline=1
 
 set autoindent
 set smartindent
