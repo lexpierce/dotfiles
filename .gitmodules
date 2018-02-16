@@ -7,6 +7,3 @@
 [submodule "vim/bundle/ale"]
   path = vim/bundle/ale
   url = https://github.com/w0rp/ale.git
-[submodule "themes/Hucore"]
-	path = themes/Hucore
-	url = https://github.com/mgjohansen/hucore.git
