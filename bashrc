@@ -38,3 +38,7 @@ alias more=less
 # export PS1='C:${PWD//\//\\\}>'
 cd
 # vim:ts=4:sw=4
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/lexpierce/.sdkman"
+[[ -s "/home/lexpierce/.sdkman/bin/sdkman-init.sh" ]] && source "/home/lexpierce/.sdkman/bin/sdkman-init.sh"

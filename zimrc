@@ -11,9 +11,9 @@
 # Select what modules you would like enabled.
 # The second line of modules may depend on options set by modules in the first line.
 # These dependencies are noted on the respective module's README.md.
-zmodules=(directory environment git history input utility custom spectrum \
-          syntax-highlighting history-substring-search prompt completion \
-          ssh meta autosuggestions)
+zmodules=(syntax-highlighting directory environment git history input utility custom spectrum \
+           history-substring-search prompt completion \
+          meta autosuggestions)
 # archive fasd pacman ssh
 
 

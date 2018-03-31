@@ -7,7 +7,7 @@ if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
   source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
 fi
 
-export PATH=~/bin:/opt/mercurial/bin:/usr/local/bin:/opt/local/bin:${PATH}:~/gsutil:~/awscli/bin
+export PATH=~/bin:${PATH}
 
 umask 022
 
@@ -15,6 +15,10 @@ umask 022
 export EDITOR=vim
 export VISUAL=vim
 export PAGER=less
+
+## Go shell variables
+export GOPATH="${HOME}/go"
+export PATH="${GOPATH}/bin:${PATH}"
 
 # zsh will not beep
 # setopt no_beep
@@ -77,14 +81,6 @@ alias ll='ls -lh'
 
 # vi (go FreeBSD)
 alias vi='vim'
-
-# uses git blame to calculate code ownership (source: http://stackoverflow.com/questions/4589731/git-blame-statistics)
-function fame {
-git ls-tree -r HEAD | cut -f 2 | grep -E '\.(cc|h|cpp|hpp|c|py|coffee|rb)$' \
-  | xargs -n1 git blame --line-porcelain \
-  | grep -Pzo "author [^\n]*\n([^\n]*\n){10}[\w]*[^\w]" | grep "author " \
-  | sort | uniq -c | sort -nr
-}
 
 if [[ -x `which htop` ]]; then alias top="htop"; fi
 
@@ -519,30 +515,10 @@ REPORTTIME=10
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 [ -x /usr/bin/xdpyinfo ] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
-# NVM (Node.js Version Manager)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-# place this after nvm initialization!
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" != "N/A" ] && [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use 
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+[[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source ${HOME}/.iterm2_shell_integration.zsh
+ponysay -b round "Welcome to the bananastand!"
 
 
-source ${HOME}/.iterm2_shell_integration.zsh
-#ponysay -b round -q
-ponysay -F rainbow -b round "Welcome to the bananastand!"
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/lexpierce/.sdkman"
+[[ -s "/home/lexpierce/.sdkman/bin/sdkman-init.sh" ]] && source "/home/lexpierce/.sdkman/bin/sdkman-init.sh"

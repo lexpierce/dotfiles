@@ -1,6 +1,17 @@
+call plug#begin('~/.vim/plugged')
+Plug 'SirVer/ultisnips'
+Plug 'w0rp/ale'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
+Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; python2 generate.py' }
+Plug 'cespare/vim-toml'
+Plug 'elixir-editors/vim-elixir'
+call plug#end()
+
 set nocompatible
 filetype off
-let &runtimepath.=',~/.vim/bundle/ale'
+" let &runtimepath.=',~/.vim/bundle/ale'
 set number
 set history=500
 set showcmd
@@ -17,7 +28,6 @@ set undofile
 set background=dark
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
-  source ~/.vimrc_background
 endif
 
 let g:airline_theme='base16_3024'
