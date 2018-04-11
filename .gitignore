@@ -4,3 +4,6 @@ zsh/repos
 old
 vim/.netrwhist
 zsh/revert-info
+vim/plugged/ale
+vim/plugged/ultisnips
+vim/plugged/vim-airline
