@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vimplugged')
 Plug 'SirVer/ultisnips'
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
