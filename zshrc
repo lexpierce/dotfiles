@@ -516,7 +516,7 @@ REPORTTIME=10
 [ -x /usr/bin/xdpyinfo ] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
 [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source ${HOME}/.iterm2_shell_integration.zsh
-ponysay -b round "Welcome to the bananastand!"
+[[ -x /usr/local/bin/ponysay ]] && ponysay -b round "Welcome to the bananastand!"
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
