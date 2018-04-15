@@ -27,7 +27,7 @@ zmodules=(directory environment git git-info history input utility custom \
 #
 
 # Set your desired prompt here
-zprompt_theme='magicmace'
+zprompt_theme='minimal'
 
 #
 # Completion
