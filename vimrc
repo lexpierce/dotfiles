@@ -33,6 +33,9 @@ endif
 let g:airline_theme='base16_3024'
 let g:ansible_unindent_after_newline=1
 
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+
 set autoindent
 set smartindent
 set smarttab
