@@ -78,6 +78,9 @@ alias screen='TERM=screen-256color screen'
 # tmux stuff
 alias tmux='TERM=screen-256color tmux'
 
+# Python2 on macOS to make my life easier
+[[ "$(uname)" == "Darwin" ]] && alias python2=/usr/bin/python2.7
+
 # GLOBAL ALIASES
 
 alias -g C='| wc -l'
