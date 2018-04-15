@@ -455,6 +455,24 @@ REPORTTIME=10
 [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source ${HOME}/.iterm2_shell_integration.zsh
 [[ -x /usr/local/bin/ponysay ]] && ponysay -b round "Welcome to the bananastand!"
 
+# powerline-go
+function powerline_precmd() {
+  PS1="$(~/go/bin/powerline-go -error $? -newline -colorize-hostname -shell zsh)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [[ "$TERM" != "linux" ]]; then
+    install_powerline_precmd
+fi
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/lexpierce/.sdkman"
