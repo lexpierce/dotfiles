@@ -18,6 +18,9 @@ files="$(ls ~/dotfiles | grep -v makesymlinks | grep -vw old)"
   mkdir -p $olddir
 }
 
+# Clone zimfw
+git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
+
 cd $dir
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
