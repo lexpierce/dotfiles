@@ -1,12 +1,13 @@
 call plug#begin('~/.vimplugged')
 Plug 'SirVer/ultisnips'
+Plug 'plytophogy/vim-virtualenv'
 Plug 'w0rp/ale'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; python2 generate.py' }
 Plug 'cespare/vim-toml'
 Plug 'elixir-editors/vim-elixir'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 set nocompatible
@@ -35,6 +36,7 @@ let g:ansible_unindent_after_newline=1
 
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 set autoindent
 set smartindent
