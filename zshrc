@@ -457,7 +457,7 @@ REPORTTIME=10
 
 # powerline-go
 function powerline_precmd() {
-  PS1="$(~/go/bin/powerline-go -error $? -newline -colorize-hostname -shell zsh)"
+  PS1="$(~/go/bin/powerline-go -error $? -newline -colorize-hostname -modules venv,user,host,ssh,cwd,perms,git,hg,jobs,exit -shell zsh)"
 }
 
 function install_powerline_precmd() {
