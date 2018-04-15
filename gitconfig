@@ -4,7 +4,7 @@
 [core]
 	autocrlf = input
 	safecrlf = true
-	excludesfile = /Users/lexpierce/.gitignore_global
+	excludesfile = ~/.gitignore
 [alias]
     co = checkout
     ci = commit

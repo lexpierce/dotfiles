@@ -26,10 +26,10 @@ for file in $files; do
   [[ -h ~/.$file ]] || {
     [[ -f ~/.$file || -d ~/.$file ]] && {
       echo "Moving .$file to ${olddir}."
-      mv ~/.$file $olddir/$file
+      mv ~/".$file" "$olddir"/"$file"
     }
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -s "$dir"/"$file" ~/".$file"
   }
 done
 

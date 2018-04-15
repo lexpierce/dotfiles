@@ -2,14 +2,15 @@
 # User configuration sourced by interactive shells
 #
 
-# Source zim
-if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
-  source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
-fi
+# Change default zim location
+export ZIM_HOME="${ZDOTDIR:-${HOME}}/.zim"
 
-export PATH=~/bin:${PATH}
+# Start zim
+[[ -s "${ZIM_HOME}/init.zsh" ]] && source "${ZIM_HOME}/init.zsh"
 
-umask 022
+export PATH="~/bin:${PATH}"
+
+umask 027
 
 # editor/visual/pager
 export EDITOR=vim
@@ -19,9 +20,6 @@ export PAGER=less
 ## Go shell variables
 export GOPATH="${HOME}/go"
 export PATH="${GOPATH}/bin:${PATH}"
-
-# zsh will not beep
-# setopt no_beep
 
 # make cd push the old directory onto the directory stack
 setopt auto_pushd
@@ -36,40 +34,20 @@ stty -ixon -ixoff
 # Do not kill background processes when closing the shell.
 setopt nohup
 
-# PATHS
+# Script language PATHS
 
 export PYTHONPATH=~/lib/python
 export RUBYLIB=~/lib/ruby
 
-# fpath (for zsh-completions)
-# fpath=(~/.zsh  $fpath)
-
 # COLORS
 #
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+BASE16_SHELL="${HOME}/.config/base16-shell/"
+[[ -n "$PS1" ]] && [[ -s "${BASE16_SHELL}/profile_helper.sh" ]] && eval "$(${BASE16_SHELL}/profile_helper.sh)"
 
 base16_3024
 
-# colors
-#autoload -U colors
-#colors
-#TOMORROWNIGHT="mt=38;5;143:sl=:cx=:fn=38;5;139:ln=38;5;222:bn=38;5;143:se=38;5;222"
-
 # colored grep
-#export GREP_COLORS=$TOMORROWNIGHT
 alias grep='grep --color=auto'
-
-# colored ls
-# [[ `uname` == "Linux" ]] && eval "`dircolors -b`"
-# alias ls='ls --color=auto'
-# [[ `uname` != "Linux" ]] && alias ls='ls -FG'
-
-# make less always work with colored input
-# alias less='less -R'
-
-# make cat AWESOME!
-[[ `uname` != "Linux" ]] && alias cat='lolcat'
 
 # make watch always work with colored input
 alias watch='watch --color'
@@ -108,35 +86,10 @@ alias -g L='| less'
 alias -g M='| more'
 alias -g S='&> /dev/null'
 
-## HISTORY
-#
-## zsh history
-#export HISTFILE="$HOME/.zsh_history"
-#export HISTSIZE=10000
-#export SAVEHIST=${HISTSIZE}
-#
-## multiple zsh sessions will append to the same history file (incrementally, after each command is executed)
-#setopt inc_append_history
-#
-## purge duplicates first
-#setopt hist_expire_dups_first
-#
-## if a new command line being added to the history list duplicates an older one, the older command is removed from the list
-#setopt hist_ignore_all_dups
-#
-## reduce unnecessary blanks from commands being written to history
-#setopt hist_reduce_blanks
-#
-## import new commands from history (mostly)
-#setopt share_history
-
 # COMMAND COMPLETION
 #
 ## treat `#', `~' and `^' characters as part of patterns for filename generation
 #setopt extended_glob
-#
-## case insensitive matching when performing filename expansion
-#setopt no_case_glob
 #
 ## if command not found, but directory found, cd into this directory
 #setopt auto_cd
@@ -483,25 +436,6 @@ esac
 #
 
 
-# MISC STUFF
-
-# [RUBY] (make GC speedier by using more memory; source: https://gist.github.com/1688857)
-export RUBY_HEAP_MIN_SLOTS=1000000 # initial number of heap slots as well as the minimum number of slots allocated
-export RUBY_HEAP_SLOTS_INCREMENT=1000000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=250000000 # number of C data structures that can be allocated before GC kicks in; if too low, GC will run even if there are still heap slots available
-export RUBY_HEAP_FREE_MIN=100000 # the minimum number of heap slots that should be available after GC runs; if they are not available then, ruby will allocate more slots
-export RUBY_FREE_MIN=$RUBY_HEAP_FREE_MIN
-
-# [RUBY] use better allocator (apt-get install libtcmalloc-minimal4) (source: https://gist.github.com/4136373)
-[[ -e /usr/lib/libtcmalloc_minimal.so.4.1.0 ]] && export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4.1.0
-
-# set GitHub credentials
-[[ -e ~/.github_credentials ]] && source ~/.github_credentials
-
-# alias hub to git (https://github.com/defunkt/hub)
-##function git() { hub "$@" }
-
 # SMART URLS
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
@@ -510,10 +444,10 @@ zle -N self-insert url-quote-magic
 REPORTTIME=10
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
+[[ -x /usr/bin/lesspipe ]] && eval "$(lesspipe)"
 
 # set DISPLAY if Xvfb is running (expects it to run on :0)
-[ -x /usr/bin/xdpyinfo ] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
+[[ -x /usr/bin/xdpyinfo ]] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
 [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source ${HOME}/.iterm2_shell_integration.zsh
 [[ -x /usr/local/bin/ponysay ]] && ponysay -b round "Welcome to the bananastand!"

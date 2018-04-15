@@ -7,3 +7,7 @@ zsh/revert-info
 vim/plugged/ale
 vim/plugged/ultisnips
 vim/plugged/vim-airline
+*.swp
+*.zwc
+*.zwc.old
+custom/
