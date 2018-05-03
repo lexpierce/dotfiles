@@ -21,6 +21,9 @@ export PAGER=less
 export GOPATH="${HOME}/go"
 export PATH="${GOPATH}/bin:${PATH}"
 
+## Fix key timeout for vi-mode
+export KEYTIMEOUT=2
+
 # make cd push the old directory onto the directory stack
 setopt auto_pushd
 
