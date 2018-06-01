@@ -12,7 +12,6 @@ call plug#end()
 
 set nocompatible
 filetype off
-" let &runtimepath.=',~/.vim/bundle/ale'
 set number
 set history=500
 set showcmd
@@ -29,6 +28,7 @@ set undofile
 set background=dark
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
+  source ~/.vimrc_background
 endif
 
 let g:airline_theme='base16_3024'
