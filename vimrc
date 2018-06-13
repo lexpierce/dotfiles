@@ -6,6 +6,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; python2 generate.py' }
 Plug 'cespare/vim-toml'
 Plug 'elixir-editors/vim-elixir'
+Plug 'kchmck/vim-coffee-script'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
