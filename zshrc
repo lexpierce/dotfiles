@@ -104,8 +104,9 @@ REPORTTIME=10
 #    install_powerline_precmd
 #fi
 
-eval $(thefuck --alias)
+[[ -x /usr/local/bin/thefuck ]] && eval $(thefuck --alias)
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/lexpierce/.sdkman"
 [[ -s "/home/lexpierce/.sdkman/bin/sdkman-init.sh" ]] && source "/home/lexpierce/.sdkman/bin/sdkman-init.sh"
+
