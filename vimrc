@@ -11,6 +11,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 set nocompatible
