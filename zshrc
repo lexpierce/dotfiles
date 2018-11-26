@@ -2,15 +2,16 @@
 # User configuration sourced by interactive shells
 #
 
-# Change default zim location
+# Define zim location
 export ZIM_HOME="${ZDOTDIR:-${HOME}}/.zim"
 
 # Start zim
 [[ -s "${ZIM_HOME}/init.zsh" ]] && source "${ZIM_HOME}/init.zsh"
 
+
 export PATH="~/bin:${PATH}"
 
-umask 027
+umask 022
 
 # editor/visual/pager
 export EDITOR=vim
@@ -102,6 +103,8 @@ REPORTTIME=10
 #if [[ "$TERM" != "linux" ]]; then
 #    install_powerline_precmd
 #fi
+
+eval $(thefuck --alias)
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/lexpierce/.sdkman"
