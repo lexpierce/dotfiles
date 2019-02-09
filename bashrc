@@ -11,10 +11,16 @@ alias ls="ls -FG --color=auto"
 
 # COLORS
 #
-export BASE16_SCHEME=bright
-# Base16 Shell
-BASE16_SHELL="$HOME/.zsh/base16-${BASE16_SCHEME}.dark.sh"
-[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+BASE16_SHELL="${HOME}/.config/base16-shell/"
+[[ -n "$PS1" ]] && [[ -s "${BASE16_SHELL}/profile_helper.sh" ]] && eval "$("${BASE16_SHELL}/profile_helper.sh")"
+
+base16_3024
+
+# colored grep
+alias grep='grep --color=auto'
+
+# make watch always work with colored input
+alias watch='watch --color'
 
 export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w \$ \[\033[00m\]"
 [[ "${SSH_CONNECTION}" != '' ]] && export PS1="\[\033[01;32m\][\u@\h] \[\033[01;34m\]\w \$ \[\033[00m\]"
@@ -29,16 +35,11 @@ shopt -s extglob
 alias lsa='ls -A'
 alias ll='ls -lh'
 alias 7z='7za'
-alias sudo='PATH=/usr/sbin:/sbin:$PATH sudo'
+alias sudo='PATH=/usr/sbin:/sbin:${PATH} sudo'
 alias gpg=gpg2
 alias vi=vim
 alias more=less
 
 # A Windows-style prompt.  Good for laughs!
 # export PS1='C:${PWD//\//\\\}>'
-cd
 # vim:ts=4:sw=4
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/lexpierce/.sdkman"
-[[ -s "/home/lexpierce/.sdkman/bin/sdkman-init.sh" ]] && source "/home/lexpierce/.sdkman/bin/sdkman-init.sh"
