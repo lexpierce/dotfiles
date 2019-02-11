@@ -12,6 +12,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
 call plug#end()
 
 set nocompatible
