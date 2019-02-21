@@ -24,7 +24,6 @@ alias watch='watch --color'
 
 export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w \$ \[\033[00m\]"
 [[ "${SSH_CONNECTION}" != '' ]] && export PS1="\[\033[01;32m\][\u@\h] \[\033[01;34m\]\w \$ \[\033[00m\]"
-# [[ `uname -n` == "Darwin" ]] && export PS1="\[\033[01;32m\][\u] \[\033[01;34m\]\w 🍔  \[\033[00m\]"
 
 set -o ignoreeof
 set -o vi
