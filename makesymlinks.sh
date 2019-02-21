@@ -20,7 +20,7 @@ files="$(ls ~/dotfiles | grep -v makesymlinks | grep -vw old)"
 
 # Clone zimfw
 git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
-git clone https://github.com/chriskempson/base16-vim.git ${HOME}/.config/base16-vim
+git clone https://github.com/chriskempson/base16-shell.git ${HOME}/.config/base16-shell
 
 cd $dir || exit
 
