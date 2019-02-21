@@ -2,6 +2,9 @@
 # User configuration sourced by interactive shells
 #
 
+# Set an initial fpath for non-included completions
+fpath=($fpath ${HOME}/.zsh/completions/)
+
 # Define zim location
 export ZIM_HOME="${ZDOTDIR:-${HOME}}/.zim"
 
@@ -84,7 +87,7 @@ REPORTTIME=10
 [[ -x /usr/bin/xdpyinfo ]] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
 # [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source ${HOME}/.iterm2_shell_integration.zsh
-[[ -x /usr/local/bin/ponysay ]] && ponysay -b round "Welcome to the bananastand!"
+[[ -x /usr/local/bin/ponysay ]] && ponysay -b round "Welcome to $(hostname -s)!"
 
 ## powerline-go
 #function powerline_precmd() {
@@ -106,7 +109,10 @@ REPORTTIME=10
 
 [[ -x /usr/local/bin/thefuck ]] && eval $(thefuck --alias)
 
+# Completion for kitty
+[[ -x ${HOME}/bin/kitty ]] && kitty + complete setup zsh | source /dev/stdin
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/lexpierce/.sdkman"
-[[ -s "/home/lexpierce/.sdkman/bin/sdkman-init.sh" ]] && source "/home/lexpierce/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="${HOME}/.sdkman"
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
