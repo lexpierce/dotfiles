@@ -1,8 +1,8 @@
 call plug#begin('~/.vimplugged')
-Plug 'SirVer/ultisnips'
 Plug 'plytophogy/vim-virtualenv'
 " Plugins that require specific, newer versions of vim
 if v:version > 800
+  Plug 'SirVer/ultisnips'
   Plug 'w0rp/ale'
 endif
 " Plug 'chriskempson/base16-vim'
@@ -46,8 +46,9 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+colorscheme base16-marrakesh
 
-let g:airline_theme='base16_3024'
+let g:airline_theme='base16_marrakesh'
 let g:ansible_unindent_after_newline=1
 
 " Set this. Airline will handle the rest.
