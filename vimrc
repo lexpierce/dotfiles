@@ -23,6 +23,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'isobit/vim-caddyfile'
+Plug 'hashivim/vim-hashicorp-tools'
 call plug#end()
 
 set nocompatible
