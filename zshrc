@@ -23,7 +23,7 @@ export PAGER=less
 
 ## Go shell variables
 export GOPATH="${HOME}/go"
-export PATH="${GOPATH}/bin:/usr/local/go/bin:${PATH}"
+export PATH="${GOPATH}/bin:${PATH}"
 
 ## Fix key timeout for vi-mode
 export KEYTIMEOUT=2
