@@ -5,14 +5,7 @@ if v:version > 800
   Plug 'SirVer/ultisnips'
   Plug 'w0rp/ale'
 endif
-" Plug 'chriskempson/base16-vim'
-" 2019-02-19 - Temporarily use fork of base16-vim which fixes an issue with
-" Vim 8.1.0887 and newer. When a change is landed, then revert back to
-" canonical repo.
-"
-" Issue https://github.com/chriskempson/base16-vim/issues/197
-" Pull Request https://github.com/chriskempson/base16-vim/pull/198
-Plug 'danielwe/base16-vim'
+Plug 'chriskempson/base16-vim'
 Plug 'godlygeek/tabular'
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; python2 generate.py' }
 Plug 'cespare/vim-toml'
@@ -48,7 +41,6 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-colorscheme base16-marrakesh
 
 let g:airline_theme='base16_marrakesh'
 let g:ansible_unindent_after_newline=1
