@@ -49,6 +49,8 @@ let g:ansible_unindent_after_newline=1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
+let g:vim_markdown_folding_disabled=1
+
 set autoindent
 set smartindent
 set smarttab
