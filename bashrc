@@ -14,7 +14,7 @@ alias ls="ls -FG --color=auto"
 BASE16_SHELL="${HOME}/.config/base16-shell/"
 [[ -n "$PS1" ]] && [[ -s "${BASE16_SHELL}/profile_helper.sh" ]] && eval "$("${BASE16_SHELL}/profile_helper.sh")"
 
-base16_3024
+base16_marrakesh
 
 # colored grep
 alias grep='grep --color=auto'
@@ -41,4 +41,4 @@ alias more=less
 
 # A Windows-style prompt.  Good for laughs!
 # export PS1='C:${PWD//\//\\\}>'
-# vim:ts=4:sw=4
+# vim:ts=2:sw=2
