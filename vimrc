@@ -32,7 +32,7 @@ syntax on
 set incsearch
 set hlsearch
 
-silent !mkdir ~/.vim/backups
+silent!mkdir ~/.vim/backups
 set undodir=~/.vim/backups
 set undofile
 set background=dark
