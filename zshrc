@@ -85,7 +85,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 # ssh
 #
 
-zstyle ':zim:ssh' ids 'alex_ed25519_201609' 'id_rsa2' 'id_rsa3'
+zstyle ':zim:ssh' ids 'alex_ed25519_201609'
+
 # ------------------
 # Initialize modules
 # ------------------
@@ -224,3 +225,5 @@ REPORTTIME=10
 export SDKMAN_DIR="${HOME}/.sdkman"
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
