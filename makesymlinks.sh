@@ -18,9 +18,8 @@ files="$(ls ~/dotfiles | grep -v makesymlinks | grep -vw old)"
   mkdir -p $olddir
 }
 
-# Clone zimfw
-git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
 git clone https://github.com/chriskempson/base16-shell.git ${HOME}/.config/base16-shell
+
 
 cd $dir || exit
 
@@ -37,3 +36,9 @@ for file in $files; do
   }
 done
 
+# Install zimfw if not yet done
+[[ -f ~/.zim/zimfw.zsh ]] || {
+  mkdir ~/.zim
+  curl -L -o ~/.zim/zimfw.zsh https://raw.githubusercontent.com/zimfw/zimfw/master/zimfw.zsh
+  source ~/.zim/zimfw.zsh install
+}
