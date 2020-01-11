@@ -84,7 +84,7 @@
       ranger                  # ranger shell (https://github.com/ranger/ranger)
       nnn                     # nnn shell (https://github.com/jarun/nnn)
       vim_shell               # vim shell indicator (:sh)
-      # midnight_commander    # midnight commander shell (https://midnight-commander.org/)
+      midnight_commander    # midnight commander shell (https://midnight-commander.org/)
       # vpn_ip                # virtual private network indicator
       # ram                   # free RAM
       # load                  # CPU load
@@ -211,8 +211,6 @@
   fi
 
   #################################[ os_icon: os identifier ]##################################
-  #typeset -g LINUX_FEDORA_ICON=$'\uF798 '
-  #LINUX_FEDORA_ICON=${(g::)LINUX_FEDORA_ICON}
   # OS identifier color.
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=
   # Make the icon bold.
@@ -221,6 +219,21 @@
   POWERLEVEL9K_LINUX_FEDORA_ICON=${(g::)POWERLEVEL9K_LINUX_FEDORA_ICON}
   typeset -g POWERLEVEL9K_LINUX_CENTOS_ICON=$'\uF789 '
   POWERLEVEL9K_LINUX_CENTOS_ICON=${(g::)POWERLEVEL9K_LINUX_CENTOS_ICON}
+
+  #######################################[ Various icons ]######################################
+  typeset -g POWERLEVEL9K_ANDROID_ICON=$'\uF17b '
+  typeset -g POWERLEVEL9K_APPLE_ICON=$'\uF179 '
+  typeset -g POWERLEVEL9K_AWS_ICON=$'\uF375 '
+  typeset -g POWERLEVEL9K_DATE_ICON=$'\uF133 '
+  typeset -g POWERLEVEL9K_FOLDER_ICON=$'\uF07B '
+  typeset -g POWERLEVEL9K_JAVA_ICON=$'\uF4E4 '
+  typeset -g POWERLEVEL9K_HOME_ICON=$'\uF80A '
+  typeset -g POWERLEVEL9K_LARAVEL_ICON=$'\uF3BD '
+  typeset -g POWERLEVEL9K_LOCK_ICON=$'\uF023 '
+  typeset -g POWERLEVEL9K_MIDNIGHT_COMMANDER_ICON=$'\uF802 '
+  typeset -g POWERLEVEL9K_NODE_ICON=$'\uF3D3 '
+  typeset -g POWERLEVEL9K_PYTHON_ICON=$'\uF3E2 '
+  typeset -g POWERLEVEL9K_SSH_ICON=$'\uF21b '
 
   ################################[ prompt_char: prompt symbol ]################################
   # Green prompt symbol if the last command succeeded.
@@ -338,28 +351,35 @@
   # typeset -g POWERLEVEL9K_DIR_CLASSES=()
 
   #####################################[ vcs: git status ]######################################
-  # Github Icon. Don't use the ALT
-  typeset -g POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uF09B '
+  # VCS system icons.
+  typeset -g POWERLEVEL9K_VCS_GIT_ICON=$'\uF1D3 '
+  POWERLEVEL9K_VCS_GIT_ICON=${(g::)POWERLEVEL9K_VCS_GIT_ICON}
+  typeset -g POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=$'\uF171 '
+  POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=${(g::)POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON}
+  typeset -g POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uF09B '
   POWERLEVEL9K_VCS_GIT_GITHUB_ICON=${(g::)POWERLEVEL9K_VCS_GIT_GITHUB_ICON}
-  typeset -g POWERLEVEL9K_VCS_GIT_GITLAB_ICON='\uF296 '
+  typeset -g POWERLEVEL9K_VCS_GIT_GITLAB_ICON=$'\uF296 '
   POWERLEVEL9K_VCS_GIT_GITLAB_ICON=${(g::)POWERLEVEL9K_VCS_GIT_GITLAB_ICON}
-  # Branch icon. Set this parameter to '\uF126 ' for the popular Powerline branch icon.
-  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='\uF126 '
+  typeset -g POWERLEVEL9K_VCS_BOOKMARK_ICON=$'\uF02E '
+  POWERLEVEL9K_VCS_BOOKMARK_ICON=${(g::)POWERLEVEL9K_VCS_BOOKMARK_ICON}
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=$'\uF126 '
   POWERLEVEL9K_VCS_BRANCH_ICON=${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}
+  typeset -g POWERLEVEL9K_VCS_COMMIT_ICON=$'\uF386 '
+  POWERLEVEL9K_VCS_COMMIT_ICON=${(g::)POWERLEVEL9K_VCS_COMMIT_ICON}
 
   # Untracked files icon. It's really a question mark, your font isn't broken.
   # Change the value of this parameter to show a different icon.
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON='\uF059 '
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uF059 '
   POWERLEVEL9K_VCS_UNTRACKED_ICON=${(g::)POWERLEVEL9K_VCS_UNTRACKED_ICON}
-  typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON='\uF06A '
+  typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uF06A '
   POWERLEVEL9K_VCS_UNSTAGED_ICON=${(g::)POWERLEVEL9K_VCS_UNSTAGED_ICON}
-  typeset -g POWERLEVEL9K_VCS_STAGED_ICON='\uF055 '
+  typeset -g POWERLEVEL9K_VCS_STAGED_ICON=$'\uF055 '
   POWERLEVEL9K_VCS_STAGED_ICON=${(g::)POWERLEVEL9K_VCS_STAGED_ICON}
-  typeset -g POWERLEVEL9K_VCS_STASH_ICON='\uF310 '
+  typeset -g POWERLEVEL9K_VCS_STASH_ICON=$'\uF310 '
   POWERLEVEL9K_VCS_STASH_ICON=${(g::)POWERLEVEL9K_VCS_STASH_ICON}
-  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\uF345 '
+  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\uF345 '
   POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=${(g::)POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON}
-  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\uF342 '
+  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\uF342 '
   POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=${(g::)POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON}
 
 
@@ -646,7 +666,7 @@
   # Separate environment name from Python version only with a space.
   typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
   # Custom icon.
-  # typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION=$'\uF3E2 '
 
   #####################[ anaconda: conda environment (https://conda.io/) ]######################
   # Anaconda environment color.
@@ -667,7 +687,7 @@
   # $(pyenv version-name) == $(pyenv global).
   typeset -g POWERLEVEL9K_PYENV_PROMPT_ALWAYS_SHOW=false
   # Custom icon.
-  # typeset -g POWERLEVEL9K_PYENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_PYENV_VISUAL_IDENTIFIER_EXPANSION=$'\uF3E2 '
 
   ################[ goenv: go environment (https://github.com/syndbg/goenv) ]################
   # Goenv color.
@@ -1022,7 +1042,8 @@
   # Show battery in yellow when it's discharging.
   typeset -g POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND=178
   # Battery pictograms going from low to high level of charge.
-  typeset -g POWERLEVEL9K_BATTERY_STAGES=$'\uf58d\uf579\uf57a\uf57b\uf57c\uf57d\uf57e\uf57f\uf580\uf581\uf578'
+  #typeset -g POWERLEVEL9K_BATTERY_STAGES=$'\uf58d\uf579\uf57a\uf57b\uf57c\uf57d\uf57e\uf57f\uf580\uf581\uf578'
+  typeset -g POWERLEVEL9K_BATTERY_STAGES=$'\uf244\uf243\uf242\uf241\uf240'
   # Don't show the remaining time to charge/discharge.
   typeset -g POWERLEVEL9K_BATTERY_VERBOSE=false
 
