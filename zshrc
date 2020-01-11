@@ -85,7 +85,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 # ssh
 #
 
-zstyle ':zim:ssh' ids 'alex_ed25519_201609'
+zstyle ':zim:ssh' ids 'alex_ed25519_201609' 'pepperdata_ed25519_20171212'
 
 # ------------------
 # Initialize modules

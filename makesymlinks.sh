@@ -40,5 +40,6 @@ done
 [[ -f ~/.zim/zimfw.zsh ]] || {
   mkdir ~/.zim
   curl -L -o ~/.zim/zimfw.zsh https://raw.githubusercontent.com/zimfw/zimfw/master/zimfw.zsh
-  source ~/.zim/zimfw.zsh install
+  cd ~/.zim
+  echo "run source ~/.zim/zimfw.zsh install"
 }
