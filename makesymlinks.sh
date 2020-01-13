@@ -20,34 +20,35 @@ xdg_config="kitty git"
   mkdir -p ${olddir}
 }
 
-[[ -d ${HOME}/.config/base16-shell ]] &&
+[[ -d ${HOME}/.config/base16-shell ]] ||
   git clone https://github.com/chriskempson/base16-shell.git \
-   ${HOME}/.config/base16-shell
+    ${HOME}/.config/base16-shell
 
 cd ${dotfiles} || exit
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create
-#symlinks from the homedir to any files in the ${HOME}/dotfiles directory specified in ${file}s
+#symlinks from the homedir to any files in the ${HOME}/dotfiles directory specified in ${files}
 echo "Moving any existing dotfiles from ${HOME}/ to ${olddir} and creating symlinks."
-for file in ${file}s; do
+for file in ${files}; do
   [[ -h ${HOME}/.${file} ]] || {
     [[ -f ${HOME}/.${file} || -d ${HOME}/.${file} ]] && {
       echo "Moving .${file} to ${olddir}."
       mv ${HOME}/".${file}" "${olddir}"/"${file}"
     }
-    echo "Creating symlink to ${dotfiles}/${file} in home directory."
-    ln -s "$dir"/"${file}" ${HOME}/".${file}"
-  }
+  echo "Creating symlink to ${dotfiles}/${file} in home directory."
+  ln -s "$dir"/"${file}" ${HOME}/".${file}"
+}
 done
 echo "Moving any existing files or directories from ${XDG_CONFIG_HOME:-"${HOME}/.config"} to ${olddir} and creating symlinks."
 for dir in ${xdg_config}; do
-  [[ -h ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} ]] ||
+  [[ -h ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} ]] || {
     [[ -f ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} || -d ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} ]] && {
       echo "Moving ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} to ${olddir}."
       mv ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} ${olddir}/${dir}
-  }
+    }
   echo "Creating symlink to ${dotfiles}/xdg/${dir} in ${XDG_CONFIG_HOME:-${HOME}/.config}"
   ln -s "${dotfiles}/xdg/${dir}" ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir}
+}
 done
 
 # Install zimfw if not yet done
