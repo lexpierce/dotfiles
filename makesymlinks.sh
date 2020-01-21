@@ -36,7 +36,7 @@ for file in ${files}; do
       mv ${HOME}/".${file}" "${olddir}"/"${file}"
     }
   echo "Creating symlink to ${dotfiles}/${file} in home directory."
-  ln -s "$dir"/"${file}" ${HOME}/".${file}"
+  ln -s "${dotfiles}"/"${file}" ${HOME}/".${file}"
 }
 done
 echo "Moving any existing files or directories from ${XDG_CONFIG_HOME:-"${HOME}/.config"} to ${olddir} and creating symlinks."
