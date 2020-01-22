@@ -217,8 +217,6 @@ REPORTTIME=10
 #    install_powerline_precmd
 #fi
 
-#[[ -x /usr/local/bin/thefuck ]] && eval $(thefuck --alias)
-
 # Completion for kitty
 [[ -x ${HOME}/bin/kitty ]] && kitty + complete setup zsh | source /dev/stdin
 
