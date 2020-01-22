@@ -176,7 +176,7 @@ alias watch='watch --color'
 # ls
 alias ll='ls -lh'
 
-if [[ -x `which htop` ]]; then alias top="htop"; fi
+#if [[ -x `which htop` ]]; then alias top="htop"; fi
 
 # misc
 alias diff='colordiff -u'
