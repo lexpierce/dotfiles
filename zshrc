@@ -160,16 +160,14 @@ export RUBYLIB=~/lib/ruby
 BASE16_SHELL="${HOME}/.config/base16-shell/"
 [[ -n "$PS1" ]] && [[ -s "${BASE16_SHELL}/profile_helper.sh" ]] && eval "$(${BASE16_SHELL}/profile_helper.sh)"
 
-# Pause for profile helper to be processed. Issue on some cloud systems.
-sleep 1
-
-base16_marrakesh
 
 # colored grep
 alias grep='grep --color=auto'
 
 # make watch always work with colored input
 alias watch='watch --color'
+
+base16_marrakesh
 
 # ALIASES
 
