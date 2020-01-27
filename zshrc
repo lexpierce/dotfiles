@@ -160,10 +160,6 @@ export RUBYLIB=~/lib/ruby
 BASE16_SHELL="${HOME}/.config/base16-shell/"
 [[ -n "$PS1" ]] && [[ -s "${BASE16_SHELL}/profile_helper.sh" ]] && eval "$(${BASE16_SHELL}/profile_helper.sh)"
 
-# Pause for profile helper to be processed. Issue on some cloud systems.
-sleep 1
-
-base16_marrakesh
 
 # colored grep
 alias grep='grep --color=auto'
@@ -171,12 +167,14 @@ alias grep='grep --color=auto'
 # make watch always work with colored input
 alias watch='watch --color'
 
+base16_marrakesh
+
 # ALIASES
 
 # ls
 alias ll='ls -lh'
 
-if [[ -x `which htop` ]]; then alias top="htop"; fi
+#if [[ -x `which htop` ]]; then alias top="htop"; fi
 
 # misc
 alias diff='colordiff -u'
@@ -218,8 +216,6 @@ REPORTTIME=10
 #if [[ "$TERM" != "linux" ]]; then
 #    install_powerline_precmd
 #fi
-
-#[[ -x /usr/local/bin/thefuck ]] && eval $(thefuck --alias)
 
 # Completion for kitty
 [[ -x ${HOME}/bin/kitty ]] && kitty + complete setup zsh | source /dev/stdin
