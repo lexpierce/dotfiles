@@ -4,7 +4,7 @@
 [core]
 	autocrlf = input
 	safecrlf = true
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/ignore
   editor = vim
 [alias]
   co = checkout
@@ -35,3 +35,5 @@
   diff = auto
   interactive = auto
   status = auto
+[merge]
+	defaultToUpstream = true
