@@ -7,7 +7,7 @@ if v:version > 800
 endif
 Plug 'chriskempson/base16-vim'
 Plug 'godlygeek/tabular'
-Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; python2 generate.py' }
+Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; python3 generate.py' }
 Plug 'cespare/vim-toml'
 Plug 'elixir-editors/vim-elixir'
 Plug 'kchmck/vim-coffee-script'
