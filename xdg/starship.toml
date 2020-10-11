@@ -1,0 +1,82 @@
+# ~/.config/starship.toml
+
+format = """
+$time\
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$dart\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$julia\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$ruby\
+$rust\
+$swift\
+$terraform\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$env_var\
+$crystal\
+$cmd_duration\
+$custom\
+$line_break\
+$jobs\
+$battery\
+$status\
+$character"""
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+add_newline = true
+
+[character]
+success_symbol = "[⮞](bold green) "
+error_symbol = "[✗](bold red) "
+vicmd_symbol = "[⮜](bold green) "
+
+[cmd_duration]
+min_time = 10000
+show_notifications = true
+
+[hostname]
+ssh_only = false
+format = "@[$hostname](dimmed green) "
+
+[python]
+scan_for_pyfiles = false
+
+[username]
+show_always = true
+format = "[$user]($style)"
+
+[time]
+#disabled = false
+format = "[\\[ $time \\]]($style) "
+
+
