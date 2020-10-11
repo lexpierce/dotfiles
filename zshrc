@@ -152,8 +152,8 @@ setopt nohup
 
 # Script language PATHS
 
-export PYTHONPATH=~/lib/python
-export RUBYLIB=~/lib/ruby
+export PYTHONPATH="${HOME}/lib/python"
+export RUBYLIB="${HOME}/lib/ruby"
 
 # COLORS
 #
@@ -167,7 +167,6 @@ alias grep='grep --color=auto'
 # make watch always work with colored input
 alias watch='watch --color'
 
-base16_marrakesh
 
 # ALIASES
 
@@ -190,16 +189,26 @@ zle -N self-insert url-quote-magic
 # display CPU usage stats for commands taking more than 10 seconds
 REPORTTIME=10
 
+# Cargo env - Rustup
+[[ -e ${HOME}/.cargo/env ]] && source ${HOME}/.cargo/env
+
+# Completion for kitty
+[[ -x ${HOME}/bin/kitty ]] && kitty + complete setup zsh | source /dev/stdin
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [[ -x /usr/bin/lesspipe ]] && eval "$(lesspipe)"
 
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 [[ -x /usr/bin/xdpyinfo ]] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
-# [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source ${HOME}/.iterm2_shell_integration.zsh
 [[ -x /usr/local/bin/ponysay ]] && ponysay -b round "Welcome to $(hostname -s)!"
 
-## powerline-go
+# Set color
+base16_marrakesh
+
+## Setup for various shell prompts
+
+#### powerline-go
 #function powerline_precmd() {
 #  PS1="$(~/go/bin/powerline-go -error $? -colorize-hostname -modules venv,vgo,git,hg,newline,user,host,ssh,newline,cwd,perms,jobs,exit -shell zsh)"
 #}
@@ -217,12 +226,9 @@ REPORTTIME=10
 #    install_powerline_precmd
 #fi
 
-# Completion for kitty
-[[ -x ${HOME}/bin/kitty ]] && kitty + complete setup zsh | source /dev/stdin
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="${HOME}/.sdkman"
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-
+#### P10K
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+### Starship
+eval "$(starship init zsh)"
