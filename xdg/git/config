@@ -43,6 +43,6 @@
 	prune = true
 [diff]
 	colorMoved = zebra
-[rebase]
-	autostash = true
-	autoSquash = true
+#[rebase]
+#	autostash = true
+#	autoSquash = true
