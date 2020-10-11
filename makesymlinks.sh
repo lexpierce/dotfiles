@@ -56,10 +56,9 @@ done
 [[ -f ${HOME}/.zim/zimfw.zsh ]] || {
   mkdir -v "${HOME}/.zim"
   curl -L -o "${HOME}/.zim/zimfw.zsh" "https://raw.githubusercontent.com/zimfw/zimfw/master/zimfw.zsh"
-  cd "${HOME}/.zim"
-  echo "source ${HOME}/.zim/zimfw.zsh install"
+  printf "\nRun 'source %s/.zim/zimfw.zsh install" "${HOME}"
 }
 
 # Prompt to install Starship if not available
-[[ $(starship -v 2>&1 > /dev/null) ]] ||
-  echo "run 'curl -fsSL https://starship.rs/install.sh | bash' to install starship"
+command -v starship &> /dev/null ||
+  printf "\nRun 'curl -fsSL https://starship.rs/install.sh | bash' to install starship"
