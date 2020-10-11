@@ -44,11 +44,11 @@ echo "Moving any existing files or directories from ${XDG_CONFIG_HOME:-"${HOME}/
 for dir in ${xdg_config}; do
   [[ -h ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} ]] || {
     [[ -f ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} || -d ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} ]] && {
-      echo "Moving ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} to ${olddir}."
-      mv -v "${XDG_CONFIG_HOME:-${HOME}/.config}/${dir}" "${olddir}/${dir}"
+      echo "  -> Moving ${XDG_CONFIG_HOME:-${HOME}/.config}/${dir} to ${olddir}."
+      mv "${XDG_CONFIG_HOME:-${HOME}/.config}/${dir}" "${olddir}/${dir}"
     }
-  echo "Creating symlink to ${dotfiles}/xdg/${dir} in ${XDG_CONFIG_HOME:-${HOME}/.config}"
-  ln -sv "${dotfiles}/xdg/${dir}" "${XDG_CONFIG_HOME:-${HOME}/.config}/${dir}"
+  echo "  -> Creating symlink to ${dotfiles}/xdg/${dir} in ${XDG_CONFIG_HOME:-${HOME}/.config}"
+  ln -s "${dotfiles}/xdg/${dir}" "${XDG_CONFIG_HOME:-${HOME}/.config}/${dir}"
 }
 done
 
@@ -59,3 +59,7 @@ done
   cd "${HOME}/.zim"
   echo "source ${HOME}/.zim/zimfw.zsh install"
 }
+
+# Prompt to install Starship if not available
+[[ $(starship -v 2>&1 > /dev/null) ]] ||
+  echo "run 'curl -fsSL https://starship.rs/install.sh | bash' to install starship"
