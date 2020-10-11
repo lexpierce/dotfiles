@@ -160,6 +160,8 @@ export RUBYLIB="${HOME}/lib/ruby"
 BASE16_SHELL="${HOME}/.config/base16-shell/"
 [[ -n "$PS1" ]] && [[ -s "${BASE16_SHELL}/profile_helper.sh" ]] && eval "$(${BASE16_SHELL}/profile_helper.sh)"
 
+# Cargo env - Rustup
+[[ -e "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
 
 # colored grep
 alias grep='grep --color=auto'
@@ -171,15 +173,14 @@ alias watch='watch --color'
 # ALIASES
 
 # ls
+whence lsd > /dev/null && alias ls='lsd --date=relative --icon=never'
 alias ll='ls -lh'
 
-#if [[ -x `which htop` ]]; then alias top="htop"; fi
 
 # misc
-alias diff='colordiff -u'
+whence colordiff > /dev/null && alias diff='colordiff -u'
+whence btm > /dev/null && alias top='btm'
 alias screen='TERM=screen-256color screen'
-
-# tmux stuff
 alias tmux='TERM=screen-256color tmux'
 
 # SMART URLS
@@ -189,19 +190,13 @@ zle -N self-insert url-quote-magic
 # display CPU usage stats for commands taking more than 10 seconds
 REPORTTIME=10
 
-# Cargo env - Rustup
-[[ -e ${HOME}/.cargo/env ]] && source ${HOME}/.cargo/env
-
 # Completion for kitty
-[[ -x ${HOME}/bin/kitty ]] && kitty + complete setup zsh | source /dev/stdin
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[[ -x /usr/bin/lesspipe ]] && eval "$(lesspipe)"
+whence kitty > /dev/null && kitty + complete setup zsh | source /dev/stdin
 
 # set DISPLAY if Xvfb is running (expects it to run on :0)
-[[ -x /usr/bin/xdpyinfo ]] && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
+whence xdpyinfo > /dev/null && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
-[[ -x /usr/local/bin/ponysay ]] && ponysay -b round "Welcome to $(hostname -s)!"
+whence ponysay > /dev/null && ponysay -b round "Welcome to $(hostname -s)!"
 
 # Set color
 base16_marrakesh
