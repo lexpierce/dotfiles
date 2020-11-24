@@ -10,7 +10,7 @@
 dotfiles="${HOME}/dotfiles"               # dotfiles directory
 olddir="${HOME}/dotfiles/old"             # old dotfiles backup directory
 files="bash_profile bash_prompt.bash bashrc dircolors p10k.zsh tmux tmux.conf vim vimrc zimrc zlogin zshenv zshrc"
-xdg_config="kitty git starship.toml"
+xdg_config="alacritty git kitty starship.toml"
 
 ##########
 
