@@ -85,7 +85,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 # ssh
 #
 
-zstyle ':zim:ssh' ids 'alex_ed25519_201609' 'pepperdata_ed25519_20171212'
+keys=($(ls .ssh | grep -v -E "(pub|known|config)"))
+zstyle ':zim:ssh' ids $keys
 
 # ------------------
 # Initialize modules
@@ -193,13 +194,10 @@ REPORTTIME=10
 # Completion for kitty
 whence kitty > /dev/null && kitty + complete setup zsh | source /dev/stdin
 
-# set DISPLAY if Xvfb is running (expects it to run on :0)
-whence xdpyinfo > /dev/null && xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
-
 whence ponysay > /dev/null && ponysay -b round "Welcome to $(hostname -s)!"
 
 # Set color
-base16_marrakesh
+sleep 1 && base16_marrakesh
 
 ## Setup for various shell prompts
 
@@ -224,6 +222,9 @@ base16_marrakesh
 #### P10K
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+### Zoxide
+eval "$(zoxide init --hook pwd zsh)"
 
 ### Starship
 eval "$(starship init zsh)"

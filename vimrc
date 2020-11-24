@@ -1,23 +1,20 @@
 call plug#begin('~/.vimplugged')
-Plug 'plytophogy/vim-virtualenv'
-" Plugins that require specific, newer versions of vim
-if v:version > 800
-  Plug 'SirVer/ultisnips'
-  Plug 'w0rp/ale'
-endif
-Plug 'chriskempson/base16-vim'
-Plug 'godlygeek/tabular'
-Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; python3 generate.py' }
-Plug 'cespare/vim-toml'
-Plug 'elixir-editors/vim-elixir'
-Plug 'kchmck/vim-coffee-script'
-Plug 'plasticboy/vim-markdown'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'rust-lang/rust.vim'
-Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'isobit/vim-caddyfile'
-Plug 'hashivim/vim-hashicorp-tools'
+  Plug 'chriskempson/base16-vim'
+  " Plugins that require specific, newer versions of vim
+  Plug 'preservim/tagbar'
+  if v:version > 800
+    Plug 'SirVer/ultisnips'
+    Plug 'dense-analysis/ale'
+  endif
+  Plug 'godlygeek/tabular'
+  Plug 'cespare/vim-toml'
+  Plug 'plasticboy/vim-markdown'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'rust-lang/rust.vim'
+  Plug 'isobit/vim-caddyfile'
+  Plug 'hashivim/vim-hashicorp-tools'
+  Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; python3 generate.py' }
 call plug#end()
 
 set nocompatible
@@ -51,6 +48,16 @@ let g:airline#extensions#tabline#enabled = 1
 
 let g:vim_markdown_folding_disabled=1
 
+" ALE options
+let g:ale_linters= {'rust': ['analyzer']}
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'],'rust': ['rustfmt']}
+
+" rust.vim options
+let g:rustfmt_autosave = 1
+
+let g:tagbar_ctags_bin = 'universal-ctags'
+
 set autoindent
 set smartindent
 set smarttab
@@ -70,22 +77,3 @@ au BufNewFile,BufRead *.md set filetype=markdown
 set nowrap
 set linebreak
 
-function! LF()
-    let temp = tempname()
-    exec 'silent !lf -selection-path=' . shellescape(temp)
-    if !filereadable(temp)
-        redraw!
-        return
-    endif
-    let names = readfile(temp)
-    if empty(names)
-        redraw!
-        return
-    endif
-    exec 'edit ' . fnameescape(names[0])
-    for name in names[1:]
-        exec 'argadd ' . fnameescape(name)
-    endfor
-    redraw!
-endfunction
-command! -bar LF call LF()
