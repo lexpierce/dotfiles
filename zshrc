@@ -85,7 +85,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 # ssh
 #
 
-keys=($(ls .ssh | grep -v -E "(pub|known|config)"))
+keys=($(ls .ssh | grep -v -E "(pub|known_hosts|config|authorized_keys)"))
 zstyle ':zim:ssh' ids $keys
 
 # ------------------
