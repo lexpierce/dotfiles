@@ -77,6 +77,10 @@ vicmd_symbol = "[⮜](bold green) "
 min_time = 10000
 show_notifications = true
 
+[directory]
+#home_symbol = "🚀"
+home_symbol = ""
+
 [hostname]
 ssh_only = false
 format = "@[$hostname](dimmed green) "
