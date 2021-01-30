@@ -85,7 +85,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 # ssh
 #
 
-keys=($(ls .ssh | grep -v -E "(\.pub|known_hosts|config|authorized_keys|\.pem)"))
+keys=($(ls ~/.ssh | grep -v -E "(\.pub|known_hosts|config|authorized_keys|\.pem)"))
 zstyle ':zim:ssh' ids $keys
 
 # ------------------
@@ -224,7 +224,7 @@ sleep 1 && base16_marrakesh
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ### Zoxide
-eval "$(zoxide init --hook pwd zsh)"
+whence zoxide > /dev/null && eval "$(zoxide init --hook pwd zsh)"
 
 ### Starship
 eval "$(starship init zsh)"
