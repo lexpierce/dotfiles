@@ -1,20 +1,19 @@
 call plug#begin('~/.vimplugged')
-  Plug 'chriskempson/base16-vim'
-  " Plugins that require specific, newer versions of vim
-  Plug 'preservim/tagbar'
-  if v:version > 800
-    Plug 'SirVer/ultisnips'
-    Plug 'dense-analysis/ale'
-  endif
-  Plug 'godlygeek/tabular'
-  Plug 'cespare/vim-toml'
-  Plug 'plasticboy/vim-markdown'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'rust-lang/rust.vim'
-  Plug 'isobit/vim-caddyfile'
-  Plug 'hashivim/vim-hashicorp-tools'
-  Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; python3 generate.py' }
+	" Plugins that require specific, newer versions of vim
+	if v:version > 800
+		Plug 'SirVer/ultisnips'
+		Plug 'dense-analysis/ale'
+	endif
+	Plug 'chriskempson/base16-vim'
+	Plug 'preservim/tagbar'
+	Plug 'godlygeek/tabular'
+	Plug 'cespare/vim-toml'
+	Plug 'plasticboy/vim-markdown'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'rust-lang/rust.vim'
+	Plug 'Glench/Vim-Jinja2-Syntax'
+	Plug 'hashivim/vim-hashicorp-tools'
 call plug#end()
 
 set nocompatible
@@ -29,14 +28,14 @@ syntax on
 set incsearch
 set hlsearch
 
-silent!mkdir ~/.vim/backups
+silent !mkdir ~/.vim/backups
 set undodir=~/.vim/backups
 set undofile
 set background=dark
 let g:base16_shell_path='~/.config/base16-shell/scripts'
 if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+	let base16colorspace=256
+	source ~/.vimrc_background
 endif
 
 let g:airline_theme='base16_marrakesh'
@@ -61,10 +60,13 @@ let g:tagbar_ctags_bin = 'universal-ctags'
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
-set tabstop=2
-set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set noexpandtab
 set laststatus=2
+
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 filetype plugin on
 filetype indent on
