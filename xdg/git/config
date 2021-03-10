@@ -5,17 +5,17 @@
 	autocrlf = input
 	safecrlf = true
 	excludesfile = ~/.config/git/ignore
-  editor = vim
+	editor = vim
 [alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --decorate
-  type = cat-file -t
-  dump = cat-file -p
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --decorate
+	type = cat-file -t
+	dump = cat-file -p
 [push]
 	default = matching
 [filter "media"]
@@ -31,10 +31,10 @@
 	smudge = git-lfs smudge %f
 	required = true
 [color]
-  branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
 [merge]
 	defaultToUpstream = true
 [pull]
