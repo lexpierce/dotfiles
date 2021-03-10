@@ -78,8 +78,8 @@ min_time = 10000
 show_notifications = true
 
 [directory]
-#home_symbol = "🚀"
-home_symbol = ""
+home_symbol = "🚀"
+#home_symbol = ""
 
 [hostname]
 ssh_only = false
@@ -95,5 +95,3 @@ format = "[$user]($style)"
 [time]
 #disabled = false
 format = "[\\[ $time \\]]($style) "
-
-
