@@ -93,8 +93,8 @@ zstyle ':zim:ssh' ids $keys
 # ------------------
 
 if [[ ${ZIM_HOME}/init.zsh -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-  # Update static initialization script if it's outdated, before sourcing it
-  source ${ZIM_HOME}/zimfw.zsh init -q
+	# Update static initialization script if it's outdated, before sourcing it
+	source ${ZIM_HOME}/zimfw.zsh init -q
 fi
 source ${ZIM_HOME}/init.zsh
 
@@ -113,8 +113,8 @@ bindkey '^[[B' history-substring-search-down
 # Bind up and down keys
 zmodload -F zsh/terminfo +p:terminfo
 if [[ -n ${terminfo[kcuu1]} && -n ${terminfo[kcud1]} ]]; then
-  bindkey ${terminfo[kcuu1]} history-substring-search-up
-  bindkey ${terminfo[kcud1]} history-substring-search-down
+	bindkey ${terminfo[kcuu1]} history-substring-search-up
+	bindkey ${terminfo[kcud1]} history-substring-search-down
 fi
 
 bindkey '^P' history-substring-search-up
@@ -201,25 +201,25 @@ sleep 1 && base16_marrakesh
 
 ## Setup for various shell prompts
 
-#### powerline-go
+### powerline-go
 #function powerline_precmd() {
-#  PS1="$(~/go/bin/powerline-go -error $? -colorize-hostname -modules venv,vgo,git,hg,newline,user,host,ssh,newline,cwd,perms,jobs,exit -shell zsh)"
+#	PS1="$(~/go/bin/powerline-go -error $? -colorize-hostname -modules venv,vgo,git,hg,newline,user,host,ssh,newline,cwd,perms,jobs,exit -shell zsh)"
 #}
 #
 #function install_powerline_precmd() {
-#  for s in "${precmd_functions[@]}"; do
-#    if [ "$s" = "powerline_precmd" ]; then
-#      return
-#    fi
-#  done
-#  precmd_functions+=(powerline_precmd)
+#	for s in "${precmd_functions[@]}"; do
+#		if [ "$s" = "powerline_precmd" ]; then
+#			return
+#		fi
+#	done
+#	precmd_functions+=(powerline_precmd)
 #}
 #
 #if [[ "$TERM" != "linux" ]]; then
-#    install_powerline_precmd
+#	install_powerline_precmd
 #fi
 
-#### P10K
+### P10K
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -227,4 +227,4 @@ sleep 1 && base16_marrakesh
 whence zoxide > /dev/null && eval "$(zoxide init --hook pwd zsh)"
 
 ### Starship
-eval "$(starship init zsh)"
+whence starship > /dev/null && eval "$(starship init zsh)"

@@ -39,6 +39,8 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 let g:airline_theme='base16_marrakesh'
+
+" Anisble settings
 let g:ansible_unindent_after_newline=1
 
 " Set this. Airline will handle the rest.
@@ -47,7 +49,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 let g:vim_markdown_folding_disabled=1
 
-" ALE options
+" ALE options for Rust
 let g:ale_linters= {'rust': ['analyzer']}
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'],'rust': ['rustfmt']}
@@ -66,10 +68,10 @@ set softtabstop=4
 set noexpandtab
 set laststatus=2
 
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-
 filetype plugin on
 filetype indent on
+
+autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 
 set list listchars=tab:\ \ ,trail:·
 
