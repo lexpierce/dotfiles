@@ -5,7 +5,7 @@
 	autocrlf = input
 	safecrlf = true
 	excludesfile = ~/.config/git/ignore
-	editor = vim
+	editor = nvim
 	pager = delta
 [alias]
 	co = checkout
