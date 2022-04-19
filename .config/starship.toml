@@ -1,0 +1,98 @@
+# ~/.config/starship.toml
+
+format = """
+$time\
+$username\
+$hostname \
+$shlvl\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$dart\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$julia\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$ruby\
+$rust\
+$swift\
+$terraform\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$env_var\
+$crystal\
+$cmd_duration\
+$custom\
+$line_break\
+$jobs\
+$battery\
+$status\
+$character\
+"""
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+command_timeout = 1000
+
+add_newline = true
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+
+[[battery.display]]  # "bold red" style when capacity is between 0% and 10%
+threshold = 10
+style = "bold red"
+
+[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
+threshold = 40
+style = "bold yellow"
+
+[character]
+success_symbol = "[>](bold green) "
+error_symbol = "[×](bold red) "
+vicmd_symbol = "[<](bold green) "
+
+[cmd_duration]
+min_time = 10000
+show_notifications = true
+
+[directory]
+home_symbol = "~"
+truncation_length = 4
+truncation_symbol = "…/"
+
+[hostname]
+ssh_only = true
+format = "@[$hostname](dimmed green) "
+
+[time]
+#disabled = false
+format = "[\\[ $time \\]]($style) "
+
+[username]
+show_always = true
+format = "[$user]($style)"

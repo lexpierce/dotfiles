@@ -1,0 +1,58 @@
+[user]
+	name = Alexander Pierce
+	email = alex@lexpierce.com
+[core]
+	autocrlf = input
+	safecrlf = true
+	excludesfile = ~/.config/git/ignore
+	editor = vim
+	pager = delta
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --decorate
+	type = cat-file -t
+	dump = cat-file -p
+[push]
+	default = matching
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[difftool]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+	trustExitCode = true
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[merge]
+	defaultToUpstream = true
+	conflictstyle = diff3
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[diff]
+	colorMoved = zebra
+#[rebase]
+#	autostash = true
+#	autoSquash = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	features = side-by-side line-numbers decorations
+	syntax-theme = "Catppuccin"
+	navigate = true
+[init]
+	defaultBranch = main
