@@ -22,3 +22,16 @@ if command -v nvim >/dev/null 2>&1; then
 	nvim '+PlugInstall' '+PlugClean!' '+PlugUpdate' '+qall'
 fi
 
+if ! command -v rustc >/dev/null 2>&1; then
+	if ! command -v rustup >/dev/null 2>&1; then
+		echo "Installing rust"
+		curl https://sh.rustup.rs -sSf | sh -s -- --profile default --default-toolchain stable
+	fi
+fi
+
+if command -v bat >/dev/null 2>&1; then
+	if [[ ! -f .cache/bat/themes.bin ]]; then
+		echo "Building cache for bat themes,sytaxes,etc"
+		bat cache --build
+	fi
+fi
