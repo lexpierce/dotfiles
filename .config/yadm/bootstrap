@@ -26,6 +26,7 @@ if ! command -v rustc >/dev/null 2>&1; then
 	if ! command -v rustup >/dev/null 2>&1; then
 		echo "Installing rust"
 		curl https://sh.rustup.rs -sSf | sh -s -- --profile default --default-toolchain stable
+		rustup completions zsh > ~/.zsh/completions/_rustup
 	fi
 fi
 
@@ -35,3 +36,8 @@ if command -v bat >/dev/null 2>&1; then
 		bat cache --build
 	fi
 fi
+
+if command -v starship >/dev/null 2>&1; then
+	starship completions zsh > ~/.zsh/completions/_starship
+fi
+
