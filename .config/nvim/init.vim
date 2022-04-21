@@ -7,6 +7,7 @@ call plug#begin()
 	Plug 'rust-lang/rust.vim'
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'lukas-reineke/indent-blankline.nvim'
+	Plug 'khaveesh/vim-fish-syntax'
 call plug#end() 
 
 set noshowmode
