@@ -6,7 +6,7 @@
 	safecrlf = true
 	excludesfile = ~/.config/git/ignore
 	editor = nvim
-	pager = delta
+	pager = bat
 [alias]
 	co = checkout
 	ci = commit

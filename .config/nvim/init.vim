@@ -1,11 +1,11 @@
 call plug#begin()
 	Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'feline-nvim/feline.nvim'
 	Plug 'lewis6991/gitsigns.nvim'
 	Plug 'hashivim/vim-terraform'
 	Plug 'rust-lang/rust.vim'
-	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'khaveesh/vim-fish-syntax'
 call plug#end() 
@@ -24,12 +24,12 @@ syntax on
 set incsearch
 set hlsearch
 
-let g:catppuccin_flavour = "dusk"
+let g:catppuccin_flavour = "macchiato" " latte, frappe, macchiato, mocha
 colorscheme catppuccin
 
 let dest = stdpath('data').."/backups"
-	if !empty(dest)
-		if !isdirectory(dest)
+if !empty(dest)
+	if !isdirectory(dest)
 		call mkdir(dest, 'p', 0700)
 	endif
 	echo dest
@@ -68,11 +68,18 @@ require("catppuccin").setup {
 	term_colors = false,
 	styles = {
 		comments = "italic",
-		functions = "italic",
-		keywords = "italic",
+		conditionals = "italic",
+		loops = "NONE",
+		functions = "NONE",
+		keywords = "NONE",
 		strings = "NONE",
-		variables = "italic",
-	},
+		variables = "NONE",
+		numbers = "NONE",
+		booleans = "NONE",
+		properties = "NONE",
+		types = "NONE",
+		operators = "NONE",
+		},
 	integrations = {
 		treesitter = true,
 		native_lsp = {
@@ -82,14 +89,14 @@ require("catppuccin").setup {
 				hints = "italic",
 				warnings = "italic",
 				information = "italic",
-			},
+				},
 			underlines = {
 				errors = "underline",
 				hints = "underline",
 				warnings = "underline",
 				information = "underline",
+				},
 			},
-		},
 		lsp_trouble = false,
 		cmp = true,
 		lsp_saga = false,
@@ -100,17 +107,17 @@ require("catppuccin").setup {
 			enabled = true,
 			show_root = false,
 			transparent_panel = false,
-		},
+			},
 		neotree = {
 			enabled = false,
 			show_root = false,
 			transparent_panel = false,
-		},
+			},
 		which_key = false,
 		indent_blankline = {
 			enabled = true,
-			colored_indent_levels = true,
-		},
+			colored_indent_levels = false,
+			},
 		dashboard = true,
 		neogit = false,
 		vim_sneak = false,
@@ -124,8 +131,8 @@ require("catppuccin").setup {
 		notify = true,
 		telekasten = true,
 		symbols_outline = true,
+		}
 	}
-}
 require("indent_blankline").setup()
 require('gitsigns').setup {
 	signs = {
@@ -134,7 +141,7 @@ require('gitsigns').setup {
 		delete = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
 		topdelete = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
 		changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-	},
+		},
 	signcolumn = true,	-- Toggle with `:Gitsigns toggle_signs`
 	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
 	linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -142,7 +149,7 @@ require('gitsigns').setup {
 	watch_gitdir = {
 		interval = 1000,
 		follow_files = true
-	},
+		},
 	attach_to_untracked = true,
 	current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
 	current_line_blame_opts = {
@@ -150,7 +157,7 @@ require('gitsigns').setup {
 		virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
 		delay = 1000,
 		ignore_whitespace = false,
-	},
+		},
 	current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
 	sign_priority = 6,
 	update_debounce = 100,
@@ -163,14 +170,43 @@ require('gitsigns').setup {
 		relative = 'cursor',
 		row = 0,
 		col = 1
-	},
+		},
 	yadm = {
 		enable = false
-	},
-}
-require('feline').setup {
+		},
+	}
+require("feline").setup {
 	components = require('catppuccin.core.integrations.feline'),
-}
+	}
+-- require('lualine').setup {
+--   options = {
+--     icons_enabled = true,
+-- 	theme = 'catppuccin',
+--     component_separators = { left = '', right = ''},
+--     section_separators = { left = '', right = ''},
+--     disabled_filetypes = {},
+--     always_divide_middle = true,
+--     globalstatus = false,
+--   },
+--   sections = {
+--     lualine_a = {'mode'},
+--     lualine_b = {'branch', 'diff', 'diagnostics'},
+--     lualine_c = {'filename'},
+--     lualine_x = {'encoding', 'fileformat', 'filetype'},
+--     lualine_y = {'progress'},
+--     lualine_z = {'location'}
+--   },
+--   inactive_sections = {
+--     lualine_a = {},
+--     lualine_b = {},
+--     lualine_c = {'filename'},
+--     lualine_x = {'location'},
+--     lualine_y = {},
+--     lualine_z = {}
+--   },
+--   tabline = {},
+--   extensions = {}
+-- }
 END
 
 set linebreak
