@@ -8,8 +8,13 @@ call plug#begin()
 	Plug 'rust-lang/rust.vim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'khaveesh/vim-fish-syntax'
+"	Plug 'hrsh7th/cmp-nvim-lsp'
+"	Plug 'hrsh7th/cmp-buffer'
+"	Plug 'hrsh7th/nvim-cmp'
+"	Plug 'onsails/lspkind.nvim'
 call plug#end() 
 
+set termguicolors
 set noshowmode
 set nowrap
 set ts=4
@@ -62,41 +67,53 @@ set list listchars=tab:\ \ ,trail:·
 au BufNewFile,BufRead *.md set filetype=markdown
 
 lua << END
-require'lspconfig'.rust_analyzer.setup{}
-require("catppuccin").setup {
+-- comfigure Catppuccin
+local catppuccin = require("catppuccin")
+catppuccin.setup {
+	dim_inactive = {
+		enabled = false,
+		shade = "dark",
+		percentage = 0.15,
+		},
 	transparent_background = false,
 	term_colors = false,
+	compile = {
+		enabled = false,
+		path = vim.fn.stdpath "cache" .. "/catppuccin",
+		suffix = "_compiled"
+		},
 	styles = {
-		comments = "italic",
-		conditionals = "italic",
-		loops = "NONE",
-		functions = "NONE",
-		keywords = "NONE",
-		strings = "NONE",
-		variables = "NONE",
-		numbers = "NONE",
-		booleans = "NONE",
-		properties = "NONE",
-		types = "NONE",
-		operators = "NONE",
+		comments = { "italic" },
+		conditionals = { "italic" },
+		loops = {},
+		functions = {},
+		keywords = {},
+		strings = {},
+		variables = {},
+		numbers = {},
+		booleans = {},
+		properties = {},
+		types = {},
+		operators = {},
 		},
 	integrations = {
 		treesitter = true,
 		native_lsp = {
 			enabled = true,
 			virtual_text = {
-				errors = "italic",
-				hints = "italic",
-				warnings = "italic",
-				information = "italic",
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
 				},
 			underlines = {
-				errors = "underline",
-				hints = "underline",
-				warnings = "underline",
-				information = "underline",
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
 				},
 			},
+		coc_nvim = false,
 		lsp_trouble = false,
 		cmp = true,
 		lsp_saga = false,
@@ -105,18 +122,22 @@ require("catppuccin").setup {
 		telescope = true,
 		nvimtree = {
 			enabled = true,
-			show_root = false,
+			show_root = true,
 			transparent_panel = false,
 			},
 		neotree = {
 			enabled = false,
-			show_root = false,
+			show_root = true,
 			transparent_panel = false,
+			},
+		dap = {
+			enabled = false,
+			enable_ui = false,
 			},
 		which_key = false,
 		indent_blankline = {
 			enabled = true,
-			colored_indent_levels = false,
+			colored_indent_levels = true,
 			},
 		dashboard = true,
 		neogit = false,
@@ -131,6 +152,7 @@ require("catppuccin").setup {
 		notify = true,
 		telekasten = true,
 		symbols_outline = true,
+		mini = false,
 		}
 	}
 require("indent_blankline").setup()
@@ -175,9 +197,11 @@ require('gitsigns').setup {
 		enable = false
 		},
 	}
-require("feline").setup {
-	components = require('catppuccin.core.integrations.feline'),
-	}
+-- Feline Catppuccin integration
+local ctp_feline = require('catppuccin.groups.integrations.feline')
+require("feline").setup({
+	components = ctp_feline.get(),
+	})
 -- require('lualine').setup {
 --   options = {
 --     icons_enabled = true,
@@ -206,6 +230,43 @@ require("feline").setup {
 --   },
 --   tabline = {},
 --   extensions = {}
+-- }
+-- local lspkind = require("lspkind")
+-- local cmp = require("cmp")
+-- cmp.setup {
+--    -- As currently, i am not using any snippet manager, thus disabled it.
+--       -- snippet = {
+--          --   expand = function(args)
+--             --     require("luasnip").lsp_expand(args.body)
+--             --   end,
+--          -- },
+-- 
+--       mapping = cmp.mapping.preset.insert({
+--          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+--          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+-- 		 ['<C-Space>'] = cmp.mapping.complete(),
+--          ["<C-e>"] = cmp.mapping.abort(),
+--          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+--       }),
+--       formatting = {
+--          format = lspkind.cmp_format {
+--             mode = "symbol_text",
+--             menu = {
+--                buffer   = "[buf]",
+--                nvim_lsp = "[LSP]",
+--                path     = "[path]",
+--             },
+--          },
+--       },
+-- 
+--       sources = {
+--          { name = "nvim_lsp"},
+--          { name = "path" },
+--          { name = "buffer" , keyword_length = 5},
+--       },
+--       experimental = {
+--          ghost_text = true
+--       }
 -- }
 END
 

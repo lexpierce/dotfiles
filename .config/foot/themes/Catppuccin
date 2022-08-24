@@ -2,33 +2,34 @@
 
 [cursor]
 style=beam
-color=1E1E2E F5E0DC
+color=24273a cad3f5
 
 [colors]
-background=              1E1E2E
-foreground=              D9E0EE
-selection-background=    575268
-selection-foreground=    D9E0EE
-regular0=                6E6C7E
-regular1=                F28FAD
-regular2=                ABE9B3
-regular3=                FAE3B0
-regular4=                96CDFB
-regular5=                F5C2E7
-regular6=                89DCEB
-regular7=                C3BAC6
-bright0=                 988BA2
-bright1=                 F28FAD
-bright2=                 ABE9B3
-bright3=                 FAE3B0
-bright4=                 96CDFB
-bright5=                 F5C2E7
-bright6=                 89DCEB
-bright7=                 D9E0EE
+background=              24273a
+foreground=              cad3f5
+selection-background=    5b6078
+selection-foreground=    cad3f5
+regular0=                494d64
+regular1=                ed8796
+regular2=                a6da95
+regular3=                eed49f
+regular4=                8aadf4
+regular5=                f5bde6
+regular6=                8bd5ca
+regular7=                b8c0e0
+bright0=                 5b6078
+bright1=                 ed8796
+bright2=                 a6da95
+bright3=                 eed49f
+bright4=                 8aadf4
+bright5=                 f5bde6
+bright6=                 8bd5ca
+bright7=                 a5adcb
 
-16=                      F8BD96
-17=                      F5E0DC
+16=                      f5a97f
+17=                      f4dbd6
 
-urls=                    F5E0DC
+urls=                    f4dbd6
+jump-labels=             f4dbd6 24273a
 
 # vim: ft=dosini
