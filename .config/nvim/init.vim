@@ -1,9 +1,9 @@
 call plug#begin()
 	Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'kyazdani42/nvim-web-devicons'
-	Plug 'feline-nvim/feline.nvim'
+	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'lewis6991/gitsigns.nvim'
+	Plug 'feline-nvim/feline.nvim'
 	Plug 'hashivim/vim-terraform'
 	Plug 'rust-lang/rust.vim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
