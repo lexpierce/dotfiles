@@ -1,35 +1,34 @@
 # Catppuccin
 
 [cursor]
-style=beam
 color=24273a cad3f5
 
 [colors]
-background=              24273a
-foreground=              cad3f5
-selection-background=    5b6078
-selection-foreground=    cad3f5
-regular0=                494d64
-regular1=                ed8796
-regular2=                a6da95
-regular3=                eed49f
-regular4=                8aadf4
-regular5=                f5bde6
-regular6=                8bd5ca
-regular7=                b8c0e0
-bright0=                 5b6078
-bright1=                 ed8796
-bright2=                 a6da95
-bright3=                 eed49f
-bright4=                 8aadf4
-bright5=                 f5bde6
-bright6=                 8bd5ca
-bright7=                 a5adcb
+background=24273a
+foreground=cad3f5
+selection-background=5b6078
+selection-foreground=cad3f5
+regular0=494d64
+regular1=ed8796
+regular2=a6da95
+regular3=eed49f
+regular4=8aadf4
+regular5=f5bde6
+regular6=8bd5ca
+regular7=b8c0e0
+bright0=5b6078
+bright1=ed8796
+bright2=a6da95
+bright3=eed49f
+bright4=8aadf4
+bright5=f5bde6
+bright6=8bd5ca
+bright7=a5adcb
 
-16=                      f5a97f
-17=                      f4dbd6
+16=f5a97f
+17=f4dbd6
 
-urls=                    f4dbd6
-jump-labels=             f4dbd6 24273a
+urls=f4dbd6
+jump-labels=f4dbd6 24273a
 
 # vim: ft=dosini
