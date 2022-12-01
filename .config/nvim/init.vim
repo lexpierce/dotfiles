@@ -8,6 +8,8 @@ call plug#begin()
 	Plug 'rust-lang/rust.vim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'khaveesh/vim-fish-syntax'
+	Plug 'imsnif/kdl.vim'
+	Plug 'vmchale/ion-vim'
 "	Plug 'hrsh7th/cmp-nvim-lsp'
 "	Plug 'hrsh7th/cmp-buffer'
 "	Plug 'hrsh7th/nvim-cmp'
