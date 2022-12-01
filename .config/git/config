@@ -52,7 +52,7 @@
 	diffFilter = delta --color-only
 [delta]
 	features = side-by-side line-numbers decorations
-	syntax-theme = "Catppuccin"
+	syntax-theme = "Catppuccin-macchiato"
 	navigate = true
 [init]
 	defaultBranch = main
