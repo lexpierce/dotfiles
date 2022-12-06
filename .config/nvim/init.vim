@@ -3,7 +3,8 @@ call plug#begin()
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'lewis6991/gitsigns.nvim'
-	Plug 'feline-nvim/feline.nvim'
+	"Plug 'feline-nvim/feline.nvim'
+	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'hashivim/vim-terraform'
 	Plug 'rust-lang/rust.vim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
@@ -143,8 +144,13 @@ require('gitsigns').setup {
 	},
 }
 -- Feline Catppuccin integration
-local ctp_feline = require('catppuccin.groups.integrations.feline')
-require("feline").setup({
-	components = ctp_feline.get(),
+-- local ctp_feline = require('catppuccin.groups.integrations.feline')
+-- require("feline").setup({
+-- 	components = ctp_feline.get(),
+-- })
+require('lualine').setup({
+    options = {
+        theme = "catppuccin"
+    },
 })
 END
