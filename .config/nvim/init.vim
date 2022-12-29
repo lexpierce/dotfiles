@@ -7,7 +7,7 @@ call plug#begin()
 	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'hashivim/vim-terraform'
 	Plug 'rust-lang/rust.vim'
-	Plug 'lukas-reineke/indent-blankline.nvim'
+	"Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'khaveesh/vim-fish-syntax'
 	Plug 'imsnif/kdl.vim'
 	Plug 'vmchale/ion-vim'
@@ -80,7 +80,7 @@ au BufNewFile,BufRead *.md set filetype=markdown
 
 lua << END
 require("catppuccin").setup({
-	flavour = "mocha",
+	flavour = "frappe",
 	integrations = {
 		indent_blankline = {
 			enabled = true,
@@ -89,18 +89,18 @@ require("catppuccin").setup({
 	}
 })
 
-require("indent_blankline").setup({
-	char_highlight_list = {
-		"IndentBlanklineIndent1",
-		"IndentBlanklineIndent2",
-		"IndentBlanklineIndent3",
-		"IndentBlanklineIndent4",
-		"IndentBlanklineIndent5",
-		"IndentBlanklineIndent6",
-	},
-	show_current_context = true,
-	show_current_context_start = true,
-})
+-- require("indent_blankline").setup({
+-- 	char_highlight_list = {
+-- 		"IndentBlanklineIndent1",
+-- 		"IndentBlanklineIndent2",
+-- 		"IndentBlanklineIndent3",
+-- 		"IndentBlanklineIndent4",
+-- 		"IndentBlanklineIndent5",
+-- 		"IndentBlanklineIndent6",
+-- 	},
+-- 	show_current_context = true,
+-- 	show_current_context_start = true,
+-- })
 
 require('gitsigns').setup {
 	signs = {
@@ -149,8 +149,8 @@ require('gitsigns').setup {
 -- 	components = ctp_feline.get(),
 -- })
 require('lualine').setup({
-    options = {
-        theme = "catppuccin"
-    },
+	options = {
+		theme = "catppuccin"
+	},
 })
 END
