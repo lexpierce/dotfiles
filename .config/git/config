@@ -1,5 +1,5 @@
 [user]
-	name = Alexander Pierce
+	name = Alexander J Pierce
 	email = alex@lexpierce.com
 [core]
 	autocrlf = input
@@ -28,9 +28,10 @@
 	path =
 	trustExitCode = true
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [color]
 	branch = auto
 	diff = auto
