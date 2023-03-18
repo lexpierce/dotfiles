@@ -39,6 +39,8 @@ alias gpg=gpg2
 alias vi=vim
 alias more=less
 
+eval "$(starship init bash)"
+
 # A Windows-style prompt.  Good for laughs!
 # export PS1='C:${PWD//\//\\\}>'
 # vim:ts=2:sw=2

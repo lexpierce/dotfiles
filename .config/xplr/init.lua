@@ -2615,8 +2615,8 @@ package.path = home
 .. "/.config/xplr/plugins/?.lua;"
 .. package.path
 
--- Type `Z` to spawn zoxide prompt.
-require("zoxide").setup{
-  mode = "default",
-  key = "Z",
-}
+-- -- Type `Z` to spawn zoxide prompt.
+-- require("zoxide").setup{
+--   mode = "default",
+--   key = "Z",
+-- }
