@@ -3,6 +3,7 @@ call plug#begin()
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'lewis6991/gitsigns.nvim'
+	Plug 'dense-analysis/ale'
 	"Plug 'feline-nvim/feline.nvim'
 	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'hashivim/vim-terraform'
@@ -13,6 +14,7 @@ call plug#begin()
 	Plug 'vmchale/ion-vim'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'HiPhish/nvim-ts-rainbow2'
+	Plug 'LhKipp/nvim-nu', {'do': ':TSInstall nu'}
 	"Plug 'hrsh7th/cmp-nvim-lsp'
 	"Plug 'hrsh7th/cmp-buffer'
 	"Plug 'hrsh7th/nvim-cmp'
