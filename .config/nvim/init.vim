@@ -4,7 +4,6 @@ call plug#begin()
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'lewis6991/gitsigns.nvim'
 	Plug 'dense-analysis/ale'
-	"Plug 'feline-nvim/feline.nvim'
 	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'hashivim/vim-terraform'
 	Plug 'rust-lang/rust.vim'
@@ -15,10 +14,6 @@ call plug#begin()
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'HiPhish/nvim-ts-rainbow2'
 	Plug 'LhKipp/nvim-nu', {'do': ':TSInstall nu'}
-	"Plug 'hrsh7th/cmp-nvim-lsp'
-	"Plug 'hrsh7th/cmp-buffer'
-	"Plug 'hrsh7th/nvim-cmp'
-	"Plug 'onsails/lspkind.nvim'
 call plug#end() 
 
 set termguicolors
