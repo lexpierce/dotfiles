@@ -64,7 +64,7 @@ scan_timeout = 10
 
 command_timeout = 2000
 
-continuation_prompt = "[▶▶](bright-black)"
+continuation_prompt = "[>>](bright-black)"
 
 [battery]
 full_symbol = "🔋 "
@@ -81,7 +81,7 @@ style = "bold yellow"
 
 [character]
 success_symbol = "[>](bold green) "
-error_symbol = "[×](bold red) "
+error_symbol = "[*](bold red) "
 vicmd_symbol = "[<](bold green) "
 
 [cmd_duration]
