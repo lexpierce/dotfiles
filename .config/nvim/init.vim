@@ -89,6 +89,7 @@ require("catppuccin").setup({
 		},
 	}
 })
+require("catppuccin").compile()
 
 -- require("indent_blankline").setup({
 -- 	char_highlight_list = {
