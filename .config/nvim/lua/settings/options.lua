@@ -1,0 +1,23 @@
+local o = vim.opt
+
+o.undofile = true -- Persistent undo's across all sessions
+o.backup = false -- Don't write backups. (For better performance and, unneeded non-sense
+o.writebackup = false -- Don't write backups.
+o.shiftwidth = 4 -- Insert two shifts per indent.
+o.tabstop = 4 -- tabs are every 4
+o.expandtab = false -- tabs are the truth
+o.softtabstop = 4
+o.laststatus = 2
+o.autoindent = true -- Copy indent from the current line when starting a new line
+o.breakindent = true -- Indent wrapped lines too.
+o.copyindent = true -- Copy the structure of the existing lines' indents.
+o.smartindent = true -- Non-strict cindent.
+o.number = true -- Enable line numbers
+o.termguicolors = true
+o.showmode = true
+o.wrap = false
+o.visualbell = true
+o.linebreak = true
+o.autoread = true
+o.incsearch = true
+o.hlsearch = true

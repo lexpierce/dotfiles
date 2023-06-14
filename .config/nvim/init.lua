@@ -1,0 +1,242 @@
+-- init.lua
+--
+-- Enable the experimental Lua loader.
+--
+-- What it does is:
+-- - Overrides loadfile
+-- - Adds the Lua loader using the byte-compilation cache
+-- - Adds the libs loader
+-- - Removes the default Neovim loader
+--
+-- The default Neovim loader is:
+-- https://neovim.io/doc/user/starting#initialization
+--
+-- This only starts from step 7 in the initialization process.
+vim.loader.enable()
+
+-- Check it at lua/settings/options.lua as I've documented heavily
+-- Set some options.
+require("settings.options")
+
+-- Require lazy.nvim.
+require("plugins")
+
+-- Catppuccinify the editor.
+-- vim.cmd("colorscheme catppuccin")
+-- PERF: directly call the colorscheme. (not via `vim.cmd("colorscheme x")`)
+-- lua blocks are expensive as I heard.
+-- this actually seems like an unnessearu premature optimization though
+-- HACK: Try to make this less hacky?
+
+local colorscheme = require("settings.settings").colorscheme
+
+if colorscheme == "catppuccin" or colorscheme == "onedarkpro" then
+  -- In Catppuccin, the colorscheme file is a Lua block (via vimscript) that requires the exact same thing.
+  -- So, by doing this we can optimize whilst not loosing maintainability.
+  --
+  -- for example:
+  -- [
+  -- # color/some_colorscheme.vim
+  --
+  -- lua >>
+  -- require("some_colorscheme").load()
+  --
+  -- ]
+  --
+  -- For Catppuccin and Onedarkpro it's that.
+  -- Because of that small typo of "onedark", we'll just go ahead and go fix it.
+  require(colorscheme).load()
+  -- In Tokyonight it needs a "_" for some reason so, we just put that in a "elseif" block.
+elseif colorscheme == "tokyonight" then
+  require("tokyonight")._load()
+else
+  -- If the colroscheme local doesn't match the ones in the if/elseif blocks,
+  -- we'll just go ahead and `pcall` "vim.cmd.colorscheme" to try and load it.
+  --
+  -- We'll go and use the variable "ok".
+  -- It'll be false if the colorscheme doesn't exist.
+  -- It'll be true if it does.
+  local ok = pcall(vim.cmd.colorscheme, colorscheme)
+  --         ^^^^^ ^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^
+  --           │             │               │
+  --           │             │               │
+  --      protected call     │               │
+  --                         │               │
+  --        Define what function we want to do
+  --                                         │
+  --                                the colorscheme local.
+  --                        Defined in `lua/settings/settings.colorscheme`
+  --
+  -- If it loads, we'll just go continue on, no problems :)
+  if not ok then
+    -- But if it doesn't we'll just go ahead and print that, "hey, there's no colorscheme named <colorscheme>"
+    -- And, after that we'll just load catppuccin as a fallback.
+    vim.notify("Unknown colorscheme.", vim.log.levels.ERROR, {})
+    require("catppuccin").load()
+  end
+end
+
+-- Execute "Colorscheme" autocommands as they may be needed
+-- Some plugins may use this autocommand to synchronize the colorscheme.
+--
+-- This is normally executed when we do a "vim.cmd.colorscheme" so, how about we do that as well.
+vim.api.nvim_exec_autocmds("Colorscheme", {})
+
+--require("lazy").setup({
+--	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+--	"neovim/nvim-lspconfig",
+--	"nvim-tree/nvim-web-devicons",
+--	"lewis6991/gitsigns.nvim",
+--	"dense-analysis/ale",
+--	"nvim-lualine/lualine.nvim",
+--	"jvirtanen/vim-hcl",
+--	"hashivim/vim-terraform",
+--	"hashivim/vim-vagrant",
+--	"rust-lang/rust.vim",
+--	-- "lukas-reineke/indent-blankline.nvim",
+--	"khaveesh/vim-fish-syntax",
+--	"imsnif/kdl.vim",
+--	"vmchale/ion-vim",
+--	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+--	"HiPhish/nvim-ts-rainbow2",
+--	{ "LhKipp/nvim-nu", build = ":TSInstall nu" },
+--},
+--{
+--	defaults = {
+--		lazy = true, -- should plugins be lazy-loaded?
+--	},
+--	checker = {
+--		-- automatically check for plugin updates
+--		enabled = true,
+--		concurrency = nil, ---@type number? set to 1 to check for updates very slowly
+--		notify = true, -- get a notification when new updates are found
+--		frequency = 86400, -- check for updates every hour
+--	},
+--	install = {
+--		-- install missing plugins on startup. This doesn't increase startup time.
+--		missing = true,
+--		-- try to load one of these colorschemes when starting an installation during startup
+--		colorscheme = { "catppuccin" },
+--	},
+--	ui = {
+--		icons = {
+--			-- Unicode, not Nerd fonts...
+--			cmd = "⌘",
+--			config = "🛠",
+--			event = "📅",
+--			ft = "📂",
+--			init = "⚙",
+--			keys = "🗝",
+--			plugin = "🔌",
+--			runtime = "💻",
+--			source = "📄",
+--			start = "🚀",
+--			task = "📌",
+--			lazy = "💤 ",
+--		},
+--	},
+--
+--})
+--
+--
+--require("catppuccin").setup({
+--	flavour = "macchiato",
+--	term_colors = true,
+--	integrations = {
+--		indent_blankline = {
+--			enabled = false,
+--			colored_indent_levels = false,
+--		},
+--	}
+--})
+--require("catppuccin").compile()
+--
+---- require("indent_blankline").setup({
+--	-- 	char_highlight_list = {
+--		-- 		"IndentBlanklineIndent1",
+--		-- 		"IndentBlanklineIndent2",
+--		-- 		"IndentBlanklineIndent3",
+--		-- 		"IndentBlanklineIndent4",
+--		-- 		"IndentBlanklineIndent5",
+--		-- 		"IndentBlanklineIndent6",
+--		-- 	},
+--		-- 	show_current_context = true,
+--		-- 	show_current_context_start = true,
+--		-- })
+--
+--		require('gitsigns').setup {
+--			signs = {
+--				add	= {hl = 'GitSignsAdd', text = '│', numhl='GitSignsAddNr', linehl='GitSignsAddLn'},
+--				change = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+--				delete = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+--				topdelete = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+--				changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+--			},
+--			signcolumn = true,	-- Toggle with `:Gitsigns toggle_signs`
+--			numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+--			linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+--			word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+--			watch_gitdir = {
+--				interval = 1000,
+--				follow_files = true
+--			},
+--			attach_to_untracked = true,
+--			current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+--			current_line_blame_opts = {
+--				virt_text = true,
+--				virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+--				delay = 1000,
+--				ignore_whitespace = false,
+--			},
+--			current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+--			sign_priority = 6,
+--			update_debounce = 100,
+--			status_formatter = nil, -- Use default
+--			max_file_length = 40000,
+--			preview_config = {
+--				-- Options passed to nvim_open_win
+--				border = 'single',
+--				style = 'minimal',
+--				relative = 'cursor',
+--				row = 0,
+--				col = 1
+--			},
+--			yadm = {
+--				enable = false
+--			},
+--		}
+--
+--		-- Feline Catppuccin integration
+--		-- local ctp_feline = require('catppuccin.groups.integrations.feline')
+--		-- require("feline").setup({
+--			-- 	components = ctp_feline.get(),
+--			-- })
+--
+--			require('lualine').setup({
+--				options = {
+--					theme = "catppuccin"
+--				},
+--				sections = {
+--					lualine_x = {
+--						{
+--							require("lazy.status").updates,
+--							cond = require("lazy.status").has_updates,
+--							color = { fg = "#ff9e64" },
+--						},
+--					},
+--				},
+--			})
+--
+--			require('nvim-treesitter.configs').setup({
+--				rainbow = {
+--					enable = true,
+--					-- list of languages you want to disable the plugin for
+--					disable = { "jsx", "cpp" },
+--					-- Which query to use for finding delimiters
+--					query = 'rainbow-parens',
+--					-- Highlight the entire buffer all at once
+--					strategy = require 'ts-rainbow.strategy.global',
+--				}
+--			})
+--
+--			vim.cmd.colorscheme "catppuccin"
