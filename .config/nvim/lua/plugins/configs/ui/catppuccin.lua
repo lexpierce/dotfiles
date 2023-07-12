@@ -9,8 +9,6 @@ return {
 		nvimtree = false,
 		telescope = false,
 		treesitter = true,
-		ts_rainbow = false,
-		ts_rainbow2 = true,
 		native_lsp = {
 			enabled = true,
 			virtual_text = {

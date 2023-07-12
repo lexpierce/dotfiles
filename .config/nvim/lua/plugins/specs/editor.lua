@@ -15,7 +15,6 @@ return {
 			require("core.utils.lazy")("gitsigns.nvim")
 		end,
 	},
-	{ "HiPhish/nvim-ts-rainbow2" },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function()
