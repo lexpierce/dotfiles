@@ -1,4 +1,4 @@
-i(
+(
     selected_tab: Reset,
     command_fg: Rgb(205, 214, 244),
     selection_bg: Rgb(88, 91, 112),
