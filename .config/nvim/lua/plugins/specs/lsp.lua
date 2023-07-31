@@ -101,6 +101,7 @@ return {
 					gopls = {},
 					["rust_analyzer"] = {},
 					ruff_lsp = {},
+					zls = {}
 				},
 			}
 		end,

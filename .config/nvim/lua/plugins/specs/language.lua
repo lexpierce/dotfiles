@@ -11,5 +11,6 @@ return {
 	"khaveesh/vim-fish-syntax",
 	"imsnif/kdl.vim",
 	"vmchale/ion-vim",
+	"ziglang/zig.vim",
 	{ "LhKipp/nvim-nu", build = ":TSInstall nu" },
 }
