@@ -8,12 +8,8 @@ return function(plugin)
 					vim.schedule(function()
 						require("lazy").load({ plugins = plugin })
 
-						if plugin == "nvim-lspconfig" or plugin == "null-ls.nvim" or plugin == "vim-matchup" then
+						if plugin == "nvim-lspconfig" or plugin == "vim-matchup" then
 							vim.cmd("silent! do FileType")
-
-							if plugin == "null-ls.nvim" then
-								require("null-ls.state").register_conditional_sources()
-							end
 						end
 					end)
 				else
