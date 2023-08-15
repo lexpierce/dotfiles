@@ -11,11 +11,6 @@ alias ls="ls -FG --color=auto"
 
 # COLORS
 #
-BASE16_SHELL="${HOME}/.config/base16-shell/"
-[[ -n "$PS1" ]] && [[ -s "${BASE16_SHELL}/profile_helper.sh" ]] && eval "$("${BASE16_SHELL}/profile_helper.sh")"
-
-base16_marrakesh
-
 # colored grep
 alias grep='grep --color=auto'
 
@@ -39,7 +34,7 @@ alias gpg=gpg2
 alias vi=vim
 alias more=less
 
-eval "$(starship init bash)"
+# eval "$(starship init bash)"
 
 # A Windows-style prompt.  Good for laughs!
 # export PS1='C:${PWD//\//\\\}>'
