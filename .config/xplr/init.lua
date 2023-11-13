@@ -14,7 +14,7 @@ local xplr = xplr -- The globally exposed configuration to be overridden.
 -- See https://xplr.dev/en/upgrade-guide
 --
 -- ```lua
-version = "0.21.1"
+version = "0.21.3"
 -- ```
 
 -- # Configuration ------------------------------------------------------------
