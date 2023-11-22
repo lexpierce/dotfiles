@@ -21,8 +21,8 @@ config.initial_rows = 32
 config.native_macos_fullscreen_mode = true
 
 -- Font selection and configuration
-require 'fonts'
-config.font = wezterm.font(BerkeleyMono)
+local fonts = require 'fonts'
+config.font = wezterm.font(fonts.PragmataPro)
 config.font_size = 13.0
 
 

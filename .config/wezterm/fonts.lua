@@ -1,10 +1,11 @@
+local fonts = {
 BerkeleyMono = {
 	family = 'Berkeley Mono',
 	harfbuzz_features = {
 		'ss03=1',
 		'ss06=1'
 	}
-}
+},
 
 MonaspaceArgon = {
 	family = 'Monaspace Argon',
@@ -21,7 +22,7 @@ MonaspaceArgon = {
 		'ss07=1',
 		'ss08=1'
 	}
-}
+},
 
 MonaspaceKrypton = {
 	family = 'Monaspace Krypton',
@@ -38,7 +39,7 @@ MonaspaceKrypton = {
 		'ss07=1',
 		'ss08=1'
 	}
-}
+},
 
 MonaspaceNeon = {
 	family = 'Monaspace Neon',
@@ -55,7 +56,7 @@ MonaspaceNeon = {
 		'ss07=1',
 		'ss08=1'
 	}
-}
+},
 
 MonaspaceRadon = {
 	family = 'Monaspace Radon',
@@ -72,7 +73,7 @@ MonaspaceRadon = {
 		'ss07=1',
 		'ss08=1'
 	}
-}
+},
 
 MonaspaceXenon = {
 	family = 'Monaspace Xenon',
@@ -89,7 +90,7 @@ MonaspaceXenon = {
 		'ss07=1',
 		'ss08=1'
 	}
-}
+},
 
 MonoLisa = {
 	family = 'Monolisa',
@@ -107,7 +108,7 @@ MonoLisa = {
 		'ss15=1',
 		'ss16=1'
 	}
-}
+},
 
 PragmataPro = {
 	family = 'PragmataPro Liga',
@@ -117,3 +118,6 @@ PragmataPro = {
 		'ss13=1'
 	}
 }
+}
+
+return fonts
