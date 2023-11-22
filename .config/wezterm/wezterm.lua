@@ -22,8 +22,8 @@ config.native_macos_fullscreen_mode = true
 
 -- Font selection and configuration
 local fonts = require 'fonts'
-config.font = wezterm.font(fonts.PragmataPro)
-config.font_size = 13.0
+config.font = wezterm.font(fonts.MonoLisa)
+config.font_size = 12.0
 
 
 -- and finally, return the configuration to wezterm
