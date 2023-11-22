@@ -14,46 +14,17 @@ end
 
 -- For example, changing the color scheme:
 config.color_scheme = 'Catppuccin Macchiato'
+config.initial_cols = 120
+config.initial_rows = 32
+
+-- config.freetype_load_target = 'Light'
+config.native_macos_fullscreen_mode = true
 
 -- Font selection and configuration
+require 'fonts'
+config.font = wezterm.font(BerkeleyMono)
 config.font_size = 13.0
---
--- Monaspace w/ stylistic sets
-config.font = wezterm.font {
-	family = 'Monaspace Argon',
-	weight = 'Light',
-	harfbuzz_features = {
-		'dlig=1',
-		'calt=1',
-		'ss01=1',
-		'ss02=1',
-		'ss03=1',
-		'ss04=1',
-		'ss05=1',
-		'ss06=1',
-		'ss07=1',
-		'ss08=1'
-	}
-}
 
--- Monolisa w/ stylistic sets
---config.font = wezterm.font {
---	family = 'Monolisa',
---	weight = 'Light',
---	harfbuzz_features = {
---		'zero=1',
---		'ss05=1',
---		'ss06=1',
---		'ss07=1',
---		'ss08=1',
---		'ss10=1',
---		'ss11=1',
---		'ss13=1',
---		'ss14=1',
---		'ss15=1',
---		'ss16=1'
---	}
---}
 
 -- and finally, return the configuration to wezterm
 return config
