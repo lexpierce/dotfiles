@@ -105,7 +105,7 @@ local fonts = {
 	},
 	MonoLisa = {
 		family = 'Monolisa',
-		weight = 'Light',
+		-- weight = 'Light',
 		harfbuzz_features = {
 			'zero=1',
 			'ss05=1',
