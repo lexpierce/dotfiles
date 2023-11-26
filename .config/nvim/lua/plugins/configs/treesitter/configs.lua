@@ -49,4 +49,5 @@ return {
 	--   -- It'll override the `=` operator and, others.
 	--   enable = true,
 	-- },
+	require'nu'.setup{}
 }
