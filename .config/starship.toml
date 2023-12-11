@@ -21,7 +21,7 @@ vimcmd_symbol = "[<](bold green)"
 
 [cmd_duration]
 min_time = 30000
-show_notifications = true
+show_notifications = false
 
 [directory]
 home_symbol = "~"
