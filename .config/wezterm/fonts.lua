@@ -30,7 +30,8 @@ local fonts = {
 			'cv07',
 			'cv15',
 			'zero'
-		}
+		},
+		line_height = 1.2
 	},
 	MonaspaceArgon = {
 		family = 'Monaspace Argon',
