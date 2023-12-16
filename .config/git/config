@@ -6,7 +6,7 @@
 	safecrlf = true
 	excludesfile = ~/.config/git/ignore
 	editor = nvim
-	pager = bat --paging=always
+	pager = delta
 [alias]
 	co = checkout
 	ci = commit
@@ -23,10 +23,10 @@
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
-[difftool]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-	trustExitCode = true
+## [difftool]
+## 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+## 	path =
+## 	trustExitCode = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -45,7 +45,7 @@
 [fetch]
 	prune = true
 [diff]
-	colorMoved = zebra
+	colorMoved = default
 #[rebase]
 #	autostash = true
 #	autoSquash = true
