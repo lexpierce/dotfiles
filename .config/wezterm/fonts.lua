@@ -2,130 +2,139 @@ local fonts = {
 	BerkeleyMono = {
 		family = 'Berkeley Mono',
 		harfbuzz_features = {
-			'ss03=1',
-			'ss06=1'
+			'ss03',
+			'ss06'
 		}
 	},
 	FiraCode = {
 		family = 'Fira Code',
 		harfbuzz_features = {
-			'cv04=1',
-			'ss01=1',
-			'cv12=1',
-			'onum=1',
-			'cv17=1',
-			'ss05=1',
-			'cv31=1',
-			'cv29=1',
-			'ss02=1',
-			'ss09=1',
-			'ss07=1'
+			'cv04',
+			'ss01',
+			'cv12',
+			'onum',
+			'cv17',
+			'ss05',
+			'cv31',
+			'cv29',
+			'ss02',
+			'ss09',
+			'ss07'
 
+		}
+	},
+	JetBrainsMono ={
+		family = 'JetBrains Mono',
+		harfbuzz_features = {
+			'cv06',
+			'cv07',
+			'cv15',
+			'zero'
 		}
 	},
 	MonaspaceArgon = {
 		family = 'Monaspace Argon',
 		weight = 'Light',
 		harfbuzz_features = {
-			'dlig=1',
-			'calt=1',
-			'ss01=1',
-			'ss02=1',
-			'ss03=1',
-			'ss04=1',
-			'ss05=1',
-			'ss06=1',
-			'ss07=1',
-			'ss08=1'
+			'dlig',
+			'calt',
+			'ss01',
+			'ss02',
+			'ss03',
+			'ss04',
+			'ss05',
+			'ss06',
+			'ss07',
+			'ss08'
 		}
 	},
 	MonaspaceKrypton = {
 		family = 'Monaspace Krypton',
 		weight = 'Light',
 		harfbuzz_features = {
-			'dlig=1',
-			'calt=1',
-			'ss01=1',
-			'ss02=1',
-			'ss03=1',
-			'ss04=1',
-			'ss05=1',
-			'ss06=1',
-			'ss07=1',
-			'ss08=1'
+			'dlig',
+			'calt',
+			'ss01',
+			'ss02',
+			'ss03',
+			'ss04',
+			'ss05',
+			'ss06',
+			'ss07',
+			'ss08'
 		}
 	},
 	MonaspaceNeon = {
 		family = 'Monaspace Neon',
 		weight = 'Light',
 		harfbuzz_features = {
-			'dlig=1',
-			'calt=1',
-			'ss01=1',
-			'ss02=1',
-			'ss03=1',
-			'ss04=1',
-			'ss05=1',
-			'ss06=1',
-			'ss07=1',
-			'ss08=1'
+			'dlig',
+			'calt',
+			'ss01',
+			'ss02',
+			'ss03',
+			'ss04',
+			'ss05',
+			'ss06',
+			'ss07',
+			'ss08'
 		}
 	},
 	MonaspaceRadon = {
 		family = 'Monaspace Radon',
 		weight = 'Light',
 		harfbuzz_features = {
-			'dlig=1',
-			'calt=1',
-			'ss01=1',
-			'ss02=1',
-			'ss03=1',
-			'ss04=1',
-			'ss05=1',
-			'ss06=1',
-			'ss07=1',
-			'ss08=1'
+			'dlig',
+			'calt',
+			'ss01',
+			'ss02',
+			'ss03',
+			'ss04',
+			'ss05',
+			'ss06',
+			'ss07',
+			'ss08'
 		}
 	},
 	MonaspaceXenon = {
 		family = 'Monaspace Xenon',
 		weight = 'Light',
 		harfbuzz_features = {
-			'dlig=1',
-			'calt=1',
-			'ss01=1',
-			'ss02=1',
-			'ss03=1',
-			'ss04=1',
-			'ss05=1',
-			'ss06=1',
-			'ss07=1',
-			'ss08=1'
+			'dlig',
+			'calt',
+			'ss01',
+			'ss02',
+			'ss03',
+			'ss04',
+			'ss05',
+			'ss06',
+			'ss07',
+			'ss08'
 		}
 	},
 	MonoLisa = {
 		family = 'Monolisa',
 		-- weight = 'Light',
 		harfbuzz_features = {
-			'zero=1',
-			'ss05=1',
-			'ss07=1',
-			'ss08=1',
-			'ss10=1',
-			'ss11=1',
-			'ss13=1',
-			'ss14=1',
-			'ss15=1',
-			'ss16=1',
-			'ss18=1',
+			'zero',
+			'ss05',
+			'ss07',
+			'ss08',
+			'ss10',
+			'ss11',
+			'ss13',
+			'ss14',
+			'ss15',
+			'ss16',
+			'ss18',
 		}
 	},
 	PragmataPro = {
 		family = 'PragmataPro Liga',
 		harfbuzz_features = {
-			'calt=1',
+			'calt',
 			'ss03=0',
-			'ss13=1'
+			'ss13'
 		}
 	}
 }
