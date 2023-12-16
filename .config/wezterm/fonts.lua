@@ -109,7 +109,6 @@ local fonts = {
 		harfbuzz_features = {
 			'zero=1',
 			'ss05=1',
-			'ss06=1',
 			'ss07=1',
 			'ss08=1',
 			'ss10=1',
@@ -117,7 +116,8 @@ local fonts = {
 			'ss13=1',
 			'ss14=1',
 			'ss15=1',
-			'ss16=1'
+			'ss16=1',
+			'ss18=1',
 		}
 	},
 	PragmataPro = {
