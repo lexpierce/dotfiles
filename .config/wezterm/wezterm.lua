@@ -14,7 +14,11 @@ config.native_macos_fullscreen_mode = true
 
 -- Define fonts and stylistic settings in separate 'fonts.lua'
 local fonts = require 'fonts'
-config.font = wezterm.font(fonts.MonoLisa)
+config.font = wezterm.font(fonts.BerkeleyMono)
 config.font_size = 14.0
+
+-- Playing with transparency
+config.window_background_opacity = 0.80
+config.macos_window_background_blur = 40
 
 return config
