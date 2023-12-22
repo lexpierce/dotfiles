@@ -18,7 +18,7 @@ config.font = wezterm.font(fonts.BerkeleyMono)
 config.font_size = 14.0
 
 -- Playing with transparency
-config.window_background_opacity = 0.80
-config.macos_window_background_blur = 40
+--config.window_background_opacity = 0.80
+--config.macos_window_background_blur = 40
 
 return config

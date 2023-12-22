@@ -77,9 +77,9 @@ theme = "catppuccin-macchiato"
 # width = 600
 # height = 400
 mode = "Windowed"
-foreground-opacity = 1.0
-background-opacity = 0.8
-blur = true
+#foreground-opacity = 1.0
+#background-opacity = 0.8
+#blur = true
 macos-hide-toolbar-buttons = true
 
 # Renderer
