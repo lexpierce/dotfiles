@@ -34,7 +34,7 @@ return function(opts)
 		if server ~= "rust_analyzer" then
 			local server_opts = vim.tbl_deep_extend("force", {
 				capabilities = vim.deepcopy(capabilities),
-			}, servers[server] or {})
+				}, servers[server] or {})
 			require("lspconfig")[server].setup({ settings = server_opts })
 		end
 	end

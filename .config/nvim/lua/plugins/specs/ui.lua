@@ -27,7 +27,7 @@ return {
 					local load_lualine = function()
 						require("lazy").load({ plugins = "lualine.nvim" })
 					end
-					if vim.fn.argc() > 1 then
+				if vim.fn.argc() > 1 then
 						load_lualine()
 					else
 						vim.schedule(function()
@@ -54,17 +54,17 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {
---			filetype_exclude = {
---				"help",
---				"alpha",
---				"dashboard",
---				"neo-tree",
---				"Trouble",
---				"lazy",
---				"mason",
---				"notify",
---				"oil_preview",
---			},
+			--			filetype_exclude = {
+			--				"help",
+			--				"alpha",
+			--				"dashboard",
+			--				"neo-tree",
+			--				"Trouble",
+			--				"lazy",
+			--				"mason",
+			--				"notify",
+			--				"oil_preview",
+			--			},
 		},
 		event = "VeryLazy",
 	},

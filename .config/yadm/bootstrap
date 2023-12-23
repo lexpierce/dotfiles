@@ -1,25 +1,25 @@
 #!/bin/bash
 
 if ! command -v rustc >/dev/null 2>&1; then
-  if ! command -v rustup >/dev/null 2>&1; then
-    echo "Installing rust"
-    curl https://sh.rustup.rs -sSf | sh -s -- --profile default --default-toolchain stable
-    rustup completions zsh > ~/.zsh/completions/_rustup
-  fi
+	if ! command -v rustup >/dev/null 2>&1; then
+		echo "Installing rust"
+		curl https://sh.rustup.rs -sSf | sh -s -- --profile default --default-toolchain stable
+		rustup completions zsh > ~/.zsh/completions/_rustup
+	fi
 fi
 
 if command -v bat >/dev/null 2>&1; then
-  if [[ ! -f .cache/bat/themes.bin ]]; then
-    echo "Building cache for bat themes,sytaxes,etc"
-    bat cache --build
-  fi
+	if [[ ! -f .cache/bat/themes.bin ]]; then
+		echo "Building cache for bat themes,sytaxes,etc"
+		bat cache --build
+	fi
 fi
 
 if command -v starship >/dev/null 2>&1; then
-  starship completions zsh > ~/.zsh/completions/_starship
+	starship completions zsh > ~/.zsh/completions/_starship
 fi
 
 if command -v fish >/dev/null 2>&1; then
-  fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
-  fish -c 'fisher install (cat ~/.config/fish/fisher_plugins)'
+	fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
+	fish -c 'fisher install (cat ~/.config/fish/fisher_plugins)'
 fi
