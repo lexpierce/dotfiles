@@ -7,8 +7,8 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = 'Catppuccin Macchiato'
-config.initial_cols = 120
-config.initial_rows = 32
+config.initial_cols = 110
+config.initial_rows = 30
 
 config.native_macos_fullscreen_mode = true
 
@@ -16,6 +16,7 @@ config.native_macos_fullscreen_mode = true
 local fonts = require 'fonts'
 config.font = wezterm.font(fonts.BerkeleyMono)
 config.font_size = 14.0
+config.freetype_interpreter_version = 40
 
 -- Playing with transparency
 --config.window_background_opacity = 0.80
