@@ -16,7 +16,7 @@ continuation_prompt = "[>>](teal)"
 
 [character]
 success_symbol = "[>](bold green)"
-error_symbol = "[x](bold maroon)"
+error_symbol = "[!!](bold maroon)"
 vimcmd_symbol = "[<](bold green)"
 
 [cmd_duration]
@@ -24,14 +24,14 @@ min_time = 30000
 show_notifications = false
 
 [directory]
-home_symbol = "~"
+home_symbol = " ~"
 read_only = " ro"
 style = "lavender"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [hostname]
-ssh_only = false
+ssh_only = true
 format = "@[$hostname](green) "
 
 [time]
@@ -39,7 +39,7 @@ format = "@[$hostname](green) "
 format = "[\\[ $time \\]]($style) "
 
 [username]
-show_always = true
+show_always = false
 format = "[$user]($style)"
 
 [git_commit]
