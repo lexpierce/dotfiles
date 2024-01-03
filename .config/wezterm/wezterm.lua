@@ -19,7 +19,7 @@ config.font_size = 14.0
 config.freetype_interpreter_version = 40
 
 -- Playing with transparency
---config.window_background_opacity = 0.80
---config.macos_window_background_blur = 40
+config.window_background_opacity = 0.90
+config.macos_window_background_blur = 40
 
 return config
