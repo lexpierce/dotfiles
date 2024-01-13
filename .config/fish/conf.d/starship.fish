@@ -1,6 +1,7 @@
 if not status is-interactive && test "$CI" != true
-    exit
+	exit
 end
+
 if command -sq starship
 	starship init fish | source
 else
