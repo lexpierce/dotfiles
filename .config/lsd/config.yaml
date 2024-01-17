@@ -52,7 +52,7 @@ icons:
   when: never
   # Which icon theme to use.
   # Possible values: fancy, unicode
-  theme: fancy
+  theme: unicode
   # Separator between icon and the name
   # Default to 1 space
   separator: ' '
@@ -66,7 +66,7 @@ icons:
 # == Indicators ==
 # Whether to add indicator characters to certain listed files.
 # Possible values: false, true
-indicators: false
+indicators: true
 
 # == Layout ==
 # Which layout to use. "oneline" might be a bit confusing here and should be
@@ -115,15 +115,15 @@ total-size: false
 # Specifies how the symlink arrow display, chars in both ascii and utf8
 symlink-arrow: ⇒
 
-  ## # == Git ==
-  ## git:
-  ##   # Whether to display git status
-  ##   # Possible values: false, true
-  ##   enabled: true
-  ##   # How to display git status
-  ##   # When "classic" is set, this is set to "default".
-  ##   # Possible values: default, <theme-file-name>
-  ##   # when specifying <theme-file-name>, lsd will look up theme file
-  ##   # XDG Base Directory if relative, e.g. ~/.config/lsd/themes/<theme-file-name>.yaml,
-  ##   # The file path if absolute
-  ##   #theme: git 
+## # == Git ==
+## git:
+##   # Whether to display git status
+##   # Possible values: false, true
+##   enabled: true
+##   # How to display git status
+##   # When "classic" is set, this is set to "default".
+##   # Possible values: default, <theme-file-name>
+##   # when specifying <theme-file-name>, lsd will look up theme file
+##   # XDG Base Directory if relative, e.g. ~/.config/lsd/themes/<theme-file-name>.yaml,
+##   # The file path if absolute
+##   #theme: git 
