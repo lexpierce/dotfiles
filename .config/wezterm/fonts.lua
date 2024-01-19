@@ -137,6 +137,14 @@ local fonts = {
 			'ss03=0',
 			'ss13'
 		}
+	},
+	PragmataProMono = {
+		family = 'PragmataPro Mono Liga',
+		harfbuzz_features = {
+			'calt',
+			'ss03=0',
+			'ss13'
+		}
 	}
 }
 
