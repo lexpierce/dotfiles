@@ -101,13 +101,13 @@ symbol = "elm "
 symbol = "fnl "
 
 [fossil_branch]
-symbol = "fossil "
+symbol = " "
 
 [gcloud]
 symbol = "gcp "
 
 [git_branch]
-symbol = "git "
+symbol = " "
 
 [golang]
 symbol = "go "
