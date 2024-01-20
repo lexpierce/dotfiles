@@ -14,7 +14,7 @@ config.native_macos_fullscreen_mode = true
 
 -- Define fonts and stylistic settings in separate 'fonts.lua'
 local fonts = require 'fonts'
-config.font = wezterm.font(fonts.PragmataPro)
+config.font = wezterm.font(fonts.PragmataProMono)
 config.font_size = 15.0
 config.freetype_interpreter_version = 40
 

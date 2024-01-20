@@ -23,12 +23,14 @@ local fonts = {
 
 		}
 	},
-	JetBrainsMono ={
+	JetBrains ={
 		family = 'JetBrains Mono',
 		harfbuzz_features = {
 			'cv06',
 			'cv07',
+			'cv14',
 			'cv15',
+			'cv16',
 			'zero'
 		},
 		line_height = 1.2
@@ -144,6 +146,14 @@ local fonts = {
 			'calt',
 			'ss03=0',
 			'ss13'
+		}
+	},
+	VictorMono = {
+		family = 'Victor Mono',
+		harfbuzz_features = {
+			'calt',
+			'ss02',
+			'ss06'
 		}
 	}
 }
