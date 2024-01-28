@@ -1,6 +1,7 @@
 [user]
 	name = Alexander Sisco
 	email = alex@lexpierce.com
+	signingkey = 6AC4D9A410CAD2A1
 [core]
 	autocrlf = input
 	safecrlf = true
@@ -59,3 +60,5 @@
 	hyperlinks-file-link-format = vscode://file/{path}:{line}
 [init]
 	defaultBranch = main
+[commit]
+	gpgsign = true
